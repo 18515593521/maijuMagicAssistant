@@ -1,0 +1,70 @@
+<view class='my_box paddingBox'>
+  <view class='images'>
+    <image src='/pages/images/152859716.jpg'></image>
+  </view>
+  <view >{{mySeleftData.name}}</view>
+</view>
+
+<view class='flexColumnH'>
+  <view class='item paddingBox'>
+    <view>
+      <image src='/pages/images/work/my.png' class='img'></image>
+    </view>
+    <view class='names'>账号</view>
+    <view class='phones'>{{mySeleftData.user_name}}</view>
+    <view  class='img2'></view>
+    <!-- <image src='/pages/images/right.png' class='img2'></image> -->
+  </view>
+
+  <view class='item paddingBox'>
+    <view>
+      <image src='/pages/images/work/factory.png' class='img'></image>
+    </view>
+    <view class='names'>商户名称</view>
+    <view class='phones'>{{mySeleftData.filiale}}</view>
+    <view  class='img2'></view>
+    <!-- <image src='/pages/images/right.png' class='img2'></image> -->
+  </view>
+
+  <view class='item paddingBox' data-url='/pages/myself/phone/phone?phone={{mySeleftData.phone}}'  bindtap='skinUp'>
+    <view>
+      <image src='/pages/images/work/phone.png' class='img'></image>
+    </view>
+    <view class='names'>已绑定手机</view>
+    <view class='phones'>{{phone}}</view>
+    <image src='/pages/images/right.png' class='img2'></image>
+  </view>
+
+  <view class='item paddingBox' data-url='/pages/myself/erweima/erweima' bindtap='skinUp'>
+    <view>
+      <image src='/pages/images/work/erweima.png' class='img'></image>
+    </view>
+    <view class='names'>我的专属码</view>
+    <view class='phones'></view>
+    <image src='/pages/images/right.png' class='img2'></image>
+  </view>   
+
+  <view class='item paddingBox' data-url='/pages/myself/aboutUs/aboutUs'  bindtap='skinUp'>
+    <view>
+      <image src='/pages/images/work/about.png' class='img'></image>
+    </view>
+    <view class='names'>关于</view>
+    <view class='phones'></view>
+    <image src='/pages/images/right.png' class='img2'></image>
+  </view>  
+
+  <view class='item paddingBox' bindtap='exit'>
+    <view>
+      <image src='/pages/images/work/out.png' class='img'></image>
+    </view>
+    <view class='names'>退出登录</view>
+    <view class='phones'></view>
+    <view  class='img2'></view>
+    <!-- <image src='/pages/images/right.png' class='img2'></image> -->
+  </view>    
+</view>
+<!--动态框-->
+<import src="../../../pages/template/template.wxml"/>
+<view hidden='{{isCommercial}}'>
+  <template is="scanCorder" />
+</view>

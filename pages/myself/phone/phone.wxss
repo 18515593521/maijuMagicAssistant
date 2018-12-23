@@ -1,0 +1,42 @@
+.phone_title{
+  width:750rpx;
+  height:60rpx;
+  line-height:60rpx;
+  text-align:center;
+  color:#666;
+  font-size:26rpx;
+}
+.phone{
+  font-size:32rpx;
+  text-align: center;
+  margin-bottom:30rpx; 
+}
+.pullCode{
+  width:70%;
+  border:#fff;
+  height:80rpx;
+  line-height:80rpx;
+  padding-left:20rpx;
+  box-sizing:border-box;
+  font-size:28rpx;
+  border:2rpx solid #50bdc4;
+}
+.clickCode{
+  color:#fff;
+  width:30%;
+  font-size:26rpx;
+  background:#50bdc4;
+  height:80rpx;
+  text-align:center;
+  line-height:80rpx;
+}
+.nextStep{
+  width:150rpx;
+  height:80rpx;
+  line-height:80rpx;
+  color:#fff;
+  text-align:center;
+  font-size:28rpx;
+  margin: 50rpx auto;
+  background: #50bdc4;
+}

@@ -1,0 +1,12 @@
+<view class='phone_title'>您已经绑定的手机</view>
+<view class='phone'>{{phone}}</view>
+<view class='flexColumnH paddingBox'>
+  <view class='flexRow paddingBox'>
+    <input type='number' maxlength='6' class='pullCode'bindinput='importCode'  placeholder='输入验证码'></input>
+    <view class='clickCode' bindtap='getCode'>{{phoneValue}}</view>
+    <!-- <view class='clickCode' hidden='{{getCode}}'></view> -->
+  </view>
+</view>
+
+<view class='nextStep' bindtap='nextStep'>下一步</view>
+

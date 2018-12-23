@@ -1,0 +1,63 @@
+/* pages/work/thread_follow/thread_follow/set_task.wxss */
+.timeShow{
+  font-size:24rpx;
+  color:#4abdc2;
+  line-height:60rpx;
+}
+.select_list{
+  width:25%;
+  box-sizing:border-box;
+  height:100%;
+  position:relative;
+  margin-left:40rpx;
+}
+.select_list .from_text{
+  width:100%;
+  float:left;
+  padding:0 10rpx;
+  box-sizing:border-box;
+  text-align:center;
+  color:#eee;
+  position:absolute;
+}
+.from_text view{
+  font-size:24rpx;
+  color:#666;
+  line-height:60rpx;
+}
+.pullDown{
+  width:30rpx;
+  height:30rpx;
+  float:right;
+  margin:15rpx 10rpx 10rpx 0;
+}
+.timer{
+  font-size:26rpx;
+  color:#666;
+ 
+}
+.timeList{
+  width:250rpx;
+  height:50rpx;
+  line-height:50rpx;
+  text-align:center;
+  border-radius:50rpx;
+  border:2rpx solid #c7c7c7;
+  font-size:22rpx;
+  color:#c7c7c7;
+  /* margin:20rpx 20rpx 0 0; */
+}
+.setTeask{
+  width:750rpx;
+  height:100rpx;
+  line-height:100rpx;
+  text-align:center;
+  color:#fff;
+  font-size:32rpx;
+  background:#4abdc2;
+  position:fixed;
+  margin:auto;
+  left:0;
+  right:0;
+  bottom:0;
+}

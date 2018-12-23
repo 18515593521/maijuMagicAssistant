@@ -1,0 +1,215 @@
+.activityName{
+  width:750rpx;
+  height:60rpx;
+  line-height:60rpx;
+  border-top:2rpx solid #eee;
+   border-bottom:2rpx solid #eee;
+  font-size:28rpx;
+  color:#999;
+  padding-left:20rpx;
+  box-sizing:border-box;
+}
+.images{
+  width:750rpx;
+  height:466rpx;
+}
+.images image{
+  width:100%;
+  height:100%;
+}
+.activityInfo{
+  width:750rpx;
+  height:120rpx;
+  padding:0 20rpx;
+  box-sizing:border-box;
+}
+.noDatay{
+  width:750rpx;
+  text-align:center;
+  font-size:26rpx;
+  margin-top:20rpx;
+}
+
+.activityItem view{
+  color:#999;
+  font-size:26rpx;
+  line-height:60rpx;
+  width:50%;
+}
+.title{
+  font-size:26rpx;
+  color:#999;
+  padding-left:20rpx;
+  box-sizing:border-box;
+}
+.couponList{
+  width:750rpx;
+  height:auto;
+}
+.couponItem{
+  position:relative;
+  width:100%;
+  height:200rpx;
+}
+.bgCoupon{
+  width:100%;
+  height:100%;
+}
+.bgCoupons{
+  width:200rpx;
+  height:146.6rpx;
+  position:absolute;
+  z-index:1000000;
+  margin:auto;
+  right:131rpx;
+  top:32rpx;
+
+}
+.activityDetail{
+  position:absolute;
+  width:100%;
+  margin:auto;
+  height:100%;
+  top:0;
+  left:0;
+  bottom:0;
+  right:0;
+}
+.gift{
+  padding-left:20rpx;
+  box-sizing:border-box;
+  font-size:26rpx;
+  color:#999;
+}
+.headImg{
+  width:320rpx;
+  height:100%;
+  display:flex;
+}
+.headImg image{
+  align-items:center;
+  margin:auto;
+  width:150rpx;
+  height:150rpx;
+  border-radius:50%;
+}
+.activityGift{
+  width:430rpx;
+  height:auto;
+}
+.standard{
+  height:120rpx;
+}
+.standard2{
+  height:60rpx;
+}
+.standard view{
+  font-size:28rpx;
+  color:#fff;
+  line-height:140rpx;
+}
+.standard .names{
+  font-size:34rpx;
+  color:#fff;
+}
+.exchangeCode{
+  width:250rpx;
+  height:50rpx;
+  line-height:50rpx;
+  color:#fff;
+  font-size:20rpx;
+  background:rgba(255, 255, 255, 0.3);
+  text-align:center;
+}
+.states{
+  color:#fff;
+  font-size:24rpx;
+  text-align:center;
+  width:100rpx;
+  height:50rpx;
+  line-height:50rpx;
+  margin-left:40rpx;
+  border:2rpx dashed #fff;
+  box-sizing:border-box;
+}
+/*活动订单*/
+.activityRecord{
+ font-size:28rpx;
+ width:100%;
+ height:80rpx;
+ border-bottom:2rpx solid #eee;
+ color:#999;
+}
+.orderItem{
+  font-size:26rpx;
+  overflow:hidden;
+  line-height:30rpx;
+}
+.leftInfo{
+  float:left;
+  /* margin-left:20rpx; */
+}
+.orderOpationBox {
+  border-bottom:2rpx solid #eee;
+  display:flex;
+  overflow:hidden;
+}
+.editOrders{
+  font-size:24rpx;
+  color:#4abdc2;
+  margin-left:40rpx;
+  width:100rpx;
+  height:100%;
+  float:left;
+  text-align:center;
+}
+.edit,.print{
+  margin-right:30rpx;
+  float:right;
+}
+.orderInfo{
+  width:750rpx;
+  height:120rpx;
+  background:#eee;
+}
+.order_info{
+  width:160rpx;
+  margin:0 20rpx;
+  text-align:center;
+  padding:20rpx 0;
+  box-sizing: border-box;
+}
+.order_info view:nth-child(1){
+    font-size:26rpx;
+}
+.order_info view:nth-child(2){
+    font-size:24rpx;
+    color:#666;
+    margin-top:14rpx;
+}
+.store,.edit,.print{
+  width:30rpx;
+  height:30rpx;
+}
+.activityDetails{
+  width:150rpx;
+  height:60rpx;
+  line-height:60rpx;
+  text-align:center;
+  border:2rpx solid #eee;
+  font-size:26rpx;
+  color:#666;
+  border-radius:10rpx;
+  align-self:center;
+  margin-left:40rpx;
+}
+.orderTime{
+  width:380rpx;
+  float:left;
+  font-size:22rpx;
+  color:#666;
+  margin-top:20rpx;
+}
+.talkRecordBox{
+  background:#eee;
+}

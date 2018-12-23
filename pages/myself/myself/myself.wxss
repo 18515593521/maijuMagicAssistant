@@ -1,0 +1,43 @@
+ /*模态框*/
+ @import "/pages/template/template.wxss"; 
+.my_box{
+  width:750rpx;
+  border-top:20rpx solid #eee;
+  border-bottom:20rpx solid #eee;
+  align-items:center;
+  font-size:28rpx;
+  display:flex;
+  color:#3C3C3C;
+}
+.images image{
+  width:130rpx;
+  height:130rpx;
+  display:block;
+  border-radius:50%;
+  margin-right:20rpx;
+}
+.item{
+  width:750rpx;
+  height:100rpx;
+  display:flex;
+  align-items:center;
+  color:#3C3C3C;
+  font-size:28rpx;
+  border-bottom:2rpx solid #eee;
+}
+ .img,.img2{
+  width:35rpx;
+  height:35rpx;
+  margin-right:20rpx;
+  display:block;
+}
+.item .img2{
+  margin-left:20rpx;
+  margin-right:0;
+}
+.names,.phones{
+  width:300rpx;
+}
+.phones{
+  text-align:right;
+}

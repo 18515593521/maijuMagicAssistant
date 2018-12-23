@@ -1,0 +1,17 @@
+<view class='images'>
+  <image src='/pages/images/logo.png'></image>
+</view>
+<view class='flexColumnH'>
+  <view class='item paddingBox' bindtap='skinUp' data-url='/pages/myself/aboutUsDetail/aboutUsDetail'>
+    <view class='title'>免责声明</view>
+    <view class='imgs '>
+      <image src='/pages/images/right.png'></image>
+    </view>
+  </view>
+</view>
+<view class='flexColumnH' bindtap='calling'>
+  <view class='item paddingBox'>
+    <view class='title'>客户电话</view>
+    <view class='imgs phone'>400-770-8866</view>
+  </view>
+</view>

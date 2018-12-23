@@ -1,0 +1,442 @@
+<!--pages/work/customer_manager/customer_detail/customer_detail.wxml-->
+<view class='customer_list paddingBox flexRow justAround'>
+  <view class='item_li {{activeList[0]}}' data-item='0' data-indexs='ss' bindtap='click_request_data'>跟进记录</view>
+  <view class='item_li {{activeList[1]}}' data-item='1' bindtap='click_request_data'>客户标签</view>
+  <view class='item_li {{activeList[2]}}' data-item='2' bindtap='click_request_data'>客户详情</view>
+</view>
+<!--沟通记录-->
+<view hidden='{{itenList[0]}}'>
+  <view class='recordBox'>
+    <view class='activityRecord paddingBox'></view>
+    <view class='talkRecordBox paddingBox flexColumnH'>
+      <view class='flexRow justAround' style='margin-bottom:20rpx;'>
+        <view class='talkRecord talk'>提交时间</view>
+        <view class='talkRecord talk2'>沟通内容</view>
+      </view>
+      <view class='nodatabox' wx:if='{{customerCommunication.length==0}}'>
+        <view class='noData2'>暂无</view>
+        <!-- wx:if='{{customerCommunication.length==0}}' -->
+      </view>
+      <!-- <view class='talkRecord talk2'>客户类型</view>  -->
+
+      <block wx:for='{{customerCommunication}}' wx:for-item='items' wx:key='communicate_content' wx:for-index='indexs'>
+        <view class='flexRow talkInfo'>
+          <view class='talkTime'>
+            <image src='/pages/images/work/customer_info/dot_1.png' class='light' wx:if='{{indexs==0}}'></image>
+            <image src='/pages/images/work/customer_info/dot_2.png' class='small' wx:if='{{indexs>0}}'></image>
+            <view class='line'></view>
+            <view class='lines' wx:if='{{indexs==(customerCommunication.length-1)}}'></view>
+          </view>
+          <view class='talkContent '>{{items.create_time}}</view>
+          <view class='state'>{{items.communicate_content?items.communicate_content:'暂无'}}</view>
+          <!-- <view class='state'>{{customerTyle[items.customer_type]}}</view> -->
+        </view>
+      </block>
+    </view>
+    <view class='add_erecord' data-type='open' bindtap='add_talk'>增加记录</view>
+  </view>
+</view>
+<!--客户标签-->
+<view hidden='{{itenList[1]}}'>
+  <view class='basic_info_box flexColumnH'>
+    <view class='basic_title flexRow'>
+      <view class='images'>
+        <image src='/pages/images/work/info.png'></image>
+      </view>
+      <view>基本信息</view>
+    </view>
+    <view class='flexColumnH'>
+      <view class='flexRow basicInfo'>
+        <picker class='picker_state flexRow' data-keys='intoShopNumber' data-basic='' mode='selector' bindchange='bindChangeState' value='{{info.intoShopNumber}}' disabled='{{disableds}}' range='{{comeShop}}' style='width:500rpx'>
+          <view class='states' style='width:150rpx'>进店次数:</view>
+          <view class='statesTitle flexRow' style='width:300rpx'>
+            <view class='titles_state' style='width:300rpx'>{{comeShop[info.intoShopNumber]}}</view>
+            <view class='stateImgae'>
+              <image src='/pages/images/pulldown.png' wx:if='{{hiddents}}'></image>
+            </view>
+          </view>
+        </picker>
+      </view>
+      <view class='flexRow basicInfo'>
+        <picker class='picker_state flexRow' data-keys='customerType' data-basic='' mode='selector' bindchange='bindChangeState' value='{{info.customerType}}' disabled='{{disableds}}' range='{{customerTyle}}' style='width:600rpx'>
+          <view class='states' style='width:150rpx'>客户类型:</view>
+          <view class='statesTitle flexRow' style='width:400rpx'>
+            <view class='titles_state' style='width:400rpx'>{{customerTyle[info.customerType]}}</view>
+            <view class='stateImgae'>
+              <image src='/pages/images/pulldown.png' wx:if='{{hiddents}}'></image>
+            </view>
+          </view>
+        </picker>
+      </view>
+      <view class='flexRow basicInfo'>
+        <picker class='picker_state flexRow' data-keys='gender' data-basic='' mode='selector' bindchange='bindChangeState' value='{{info.gender}}' disabled='{{disableds}}' range='{{sexData}}'>
+          <view class='states'>性别:</view>
+          <view class='statesTitle flexRow'>
+            <view class='titles_state'>{{sexData[info.gender]}}</view>
+            <view class='stateImgae'>
+              <image src='/pages/images/pulldown.png' wx:if='{{hiddents}}'></image>
+            </view>
+          </view>
+        </picker>
+        <view class='picker_sex flexRow'>
+          <view class='states'>年龄:</view>
+          <input type='number' placeholder='请输入年龄' data-basic='' value='{{info.age}}' maxlength='3' bindinput='editContent' data-keys='age' class='statesTitle ages'></input>
+        </view>
+      </view>
+
+      <!-- <view class='flexRow basicInfo'>
+      <view class='timer'>选择沟通时间:</view>
+        <view class='statesTitle flexRow' style='width:250rpx'>
+          <picker class='picker_timer flexRow' data-keys='communicate_time_start'  start="2018-01-01" end="2100-09-01"  data-basic=''  mode = 'date'   bindchange='editContent' value='{{info.communicate_time_start}}' >
+            <view class='titles_state'>{{info.communicate_time_start}}</view>
+          </picker>
+          <view class='stateImgae'>
+            <image src='/pages/images/pulldown.png'></image>
+          </view>
+        </view>
+        <view class='statesTitle flexRow' style='width:180rpx;margin-left:20rpx'>
+          <picker mode="time" class='picker_timer flexRow'  data-keys='communicate_time1' value="{{communicate_time1}}" start="09:00" end="18:01" bindchange="bindTimeChange1">
+            <view class="picker_timer" style='text-align:center;width:140rpx;'>
+            {{communicate_time1}}
+            </view>
+          </picker>    
+          <view class='stateImgae'>
+            <image src='/pages/images/pulldown.png'></image>
+          </view>
+        </view>     
+      </view>     -->
+    </view>
+  </view>
+  <!--安装信息-->
+  <view class='basic_info_box flexColumnH'>
+    <view class='basic_title flexRow'>
+      <view class='images'>
+        <image src='/pages/images/work/wrench.png'></image>
+      </view>
+      <view>安装信息</view>
+    </view>
+    <view class='flexRow basicInfo'>
+      <picker class='picker_state flexRow' data-keys='houseSpace' data-basic='' mode='selector' bindchange='bindChangeState' value='{{info.houseSpace}}' disabled='{{disableds}}' range='{{homeArea}}' style='width:500rpx'>
+        <view class='states' style='width:150rpx'>房子面积:</view>
+        <view class='statesTitle flexRow' style='width:300rpx'>
+          <view class='titles_state' style='width:300rpx'>{{homeArea[info.houseSpace]}}</view>
+          <view class='stateImgae'>
+            <image src='/pages/images/pulldown.png' wx:if='{{hiddents}}'></image>
+          </view>
+        </view>
+      </picker>
+    </view>
+    <!-- <view class='flexRow basicInfo'>
+    <view class='flexRow' >
+      <view class='timer'>预计安装面积:</view>
+      <input type='number' placeholder='请输入面积数值'  data-basic=''  value='{{info.erection_space}}'  bindinput='editContent' data-keys='erection_space'  placeholder-style='color:#a7a7a7' class='statesTitle ages'></input> 
+      <view class='unit'>m</view>  
+    </view> 
+  </view> -->
+    <view class='flexRow basicInfo'>
+      <view class='timer' style='width:250rpx'>选择安装时间(开始):</view>
+      <view class='statesTitle flexRow' style='width:250rpx'>
+        <view class='uncertain' hidden='{{noKnown}}' bindtap='showSelect' data-type='1'>{{uncertainText}}</view>
+        <view class='titles_state' bindtap='showSelect' data-type='1' hidden='{{canTipSelect}}'>{{info.installation_time_start}}</view>
+        <view hidden='{{noTipSelect}}'>
+          <picker class='Sure flexRow' bindcancel='cancel' style='width:100%;line-height:60rpx' data-keys='installation_time_start' start="2018-01-01" end="2100-09-01" data-basic='' mode='date' bindchange='editContent' value='{{info.installation_time_start}}' disabled='{{disableds}}'>
+            <view class='titles_state' data-type='1'> {{info.installation_time_start}}</view>
+          </picker>
+        </view>
+
+        <view class='stateImgae'>
+          <image src='/pages/images/pulldown.png' wx:if='{{hiddents}}'></image>
+        </view>
+      </view>
+      <view class='statesTitle flexRow' style='width:180rpx;margin-left:20rpx' hidden='{{noKnown3}}'>
+        <picker mode="time" class='picker_timer flexRow' bindcancel='cancel' data-keys='installation_time1' value="{{installation_time1}}" disabled='{{disableds}}' start="09:00" end="18:01" bindchange="installation_time1">
+          <view class="picker_timer" style='text-align:center;width:140rpx;'>
+            {{installation_time1}}
+          </view>
+        </picker>
+        <view class='stateImgae'>
+          <image src='/pages/images/pulldown.png' wx:if='{{hiddents}}'></image>
+        </view>
+      </view>
+    </view>
+
+    <view class='flexRow basicInfo'>
+      <view class='timer' style='width:250rpx'>选择安装时间(结束):</view>
+      <view class='statesTitle flexRow' style='width:250rpx'>
+        <view class='uncertain' hidden='{{noKnown2}}' bindtap='showSelect' data-type='2'>{{uncertainText}}</view>
+        <view class='titles_state' bindtap='showSelect' data-type='2' hidden='{{canTipSelect1}}'>{{info.installation_time_end}}</view>
+        <view hidden='{{noTipSelect1}}'>
+          <picker class='Sure flexRow' style='width:100%;;line-height:60rpx' data-keys='installation_time_end' start="2018-01-01" end="2100-09-01" data-basic='' bindcancel='cancel' mode='date' bindchange='editContent' value='{{info.installation_time_end}}' disabled='{{disableds}}'>
+            <view class='titles_state' data-type='2'> {{info.installation_time_end}}</view>
+          </picker>
+        </view>
+        <view class='stateImgae'>
+          <image src='/pages/images/pulldown.png' wx:if='{{hiddents}}'></image>
+        </view>
+      </view>
+      <view class='statesTitle flexRow' style='width:180rpx;margin-left:20rpx' hidden='{{noKnown4}}'>
+        <picker mode="time" class='picker_timer flexRow' bindcancel='cancel' data-keys='installation_time2' value="{{installation_time2}}" start="09:00" end="18:01" bindchange="installation_time2" disabled='{{disableds}}'>
+          <view class="picker_timer" style='text-align:center;width:140rpx;'>
+            {{installation_time2}}
+          </view>
+        </picker>
+        <view class='stateImgae'>
+          <image src='/pages/images/pulldown.png' wx:if='{{hiddents}}'></image>
+        </view>
+      </view>
+    </view>
+    <view class='flexRow basicInfo'>
+      <view class='timer'>喜欢的产品款式:</view>
+      <input type='text' placeholder='请填写安装的款式' data-basic='' bindinput='editContent' data-keys='install_style' class='install_style' placeholder-style='color:#a7a7a7' value='{{info.install_style}}' disabled='{{disableds}}'></input>
+    </view>
+
+    <view class='flexRow basicInfo'>
+      <picker class='picker_state flexRow' data-keys='furnishStyle' data-basic='' mode='selector' bindchange='bindChangeState' value='{{info.furnishStyle}}' range='{{fitmentStyle}}' style='width:500rpx' disabled='{{disableds}}'>
+        <view class='states' style='width:150rpx'>装修风格:</view>
+        <view class='statesTitle flexRow' style='width:300rpx'>
+          <view class='titles_state' style='width:300rpx'>{{fitmentStyle[info.furnishStyle]}}</view>
+          <view class='stateImgae'>
+            <image src='/pages/images/pulldown.png' wx:if='{{hiddents}}'></image>
+          </view>
+        </view>
+      </picker>
+    </view>
+    <view class='flexRow basicInfo'>
+      <picker class='picker_state flexRow' data-keys='furnishProgress' data-basic='' mode='selector' bindchange='bindChangeState' value='{{info.furnishProgress}}' range='{{fitmentlength}}' style='width:500rpx' disabled='{{disableds}}'>
+        <view class='states' style='width:150rpx'>装修进度:</view>
+        <view class='statesTitle flexRow' style='width:300rpx'>
+          <view class='titles_state' style='width:300rpx'>{{fitmentlength[info.furnishProgress]}}</view>
+          <view class='stateImgae'>
+            <image src='/pages/images/pulldown.png' wx:if='{{hiddents}}'></image>
+          </view>
+        </view>
+      </picker>
+    </view>
+    <view class='flexRow basicInfo'>
+      <picker class='picker_state flexRow' data-keys='addWeixin' data-basic='' mode='selector' bindchange='bindChangeState' value='{{info.addWeixin}}' range='{{isHaveWeiXin}}' style='width:500rpx' disabled='{{disableds}}'>
+        <view class='states' style='width:200rpx'>是否加客户微信:</view>
+        <view class='statesTitle flexRow' style='width:300rpx'>
+          <view class='titles_state' style='width:300rpx'>{{isHaveWeiXin[info.addWeixin]}}</view>
+          <view class='stateImgae'>
+            <image src='/pages/images/pulldown.png' wx:if='{{hiddents}}'></image>
+          </view>
+        </view>
+      </picker>
+    </view>
+    <view class='flexRow basicInfo'>
+      <picker class='picker_state flexRow' data-keys='appointment' data-basic='' mode='selector' bindchange='bindChangeState' value='{{info.appointment}}' range='{{isorderamount}}' style='width:600rpx' disabled='{{disableds}}'>
+        <view class='states' style='width:230rpx'>是否已预约上门测量:</view>
+        <view class='statesTitle flexRow' style='width:300rpx'>
+          <view class='titles_state' style='width:300rpx'>{{isorderamount[info.appointment]}}</view>
+          <view class='stateImgae'>
+            <image src='/pages/images/pulldown.png' wx:if='{{hiddents}}'></image>
+          </view>
+        </view>
+      </picker>
+    </view>
+    <view class='flexRow basicInfo'>
+      <picker class='picker_state flexRow' data-keys='sendMessage' data-basic='' mode='selector' bindchange='bindChangeState' value='{{info.sendMessage}}' range='{{issendNote}}' style='width:500rpx' disabled='{{disableds}}'>
+        <view class='states' style='width:200rpx'>是否发送离店短信:</view>
+        <view class='statesTitle flexRow' style='width:300rpx'>
+          <view class='titles_state' style='width:300rpx'>{{issendNote[info.sendMessage]}}</view>
+          <view class='stateImgae'>
+            <image src='/pages/images/pulldown.png' wx:if='{{hiddents}}'></image>
+          </view>
+        </view>
+      </picker>
+    </view>
+    <view class='flexRow basicInfo'>
+      <view class='timer'>竞争品牌:</view>
+      <input type='text' placeholder='请填写品牌名称' data-basic='' bindinput='editContent' data-keys='competitiveBrand' class='install_style' placeholder-style='color:#a7a7a7' value='{{info.competitiveBrand}}' disabled='{{disableds}}'></input>
+    </view>
+    <view class='titler'>用户备注</view>
+    <textarea value='{{info.remark}}' hidden='{{textHidenShow}}' data-basic='' placeholder='请输入备注' data-keys='remark' class='remark paddingBox' bindinput='editContent' disabled='{{disableds}}'></textarea>
+  </view>
+
+
+  <!--编辑按钮-->
+  <view class='submit' bindtap='editData' wx:if='{{disableds}}'>编辑</view>
+  <!--提交按钮-->
+  <view class='submit' bindtap='submitData' hidden='{{disableds}}'>提交</view>
+  <!--弹框开始-->
+  <view class='pop-select_content' hidden='{{startTimers1}}'>
+    <view class='pop-select flexColumnH'>
+      <view class='content' style='text-align:center;line-height:120rpx'>预计开始安装时间</view>
+      <view class='flexRow sureContent'>
+        <view class='noSure' bindtap='unknown'>未定</view>
+        <picker class='Sure flexRow' style='background:#44c0c1' data-keys='installation_time_start' start="2018-01-01" end="2100-09-01" data-basic='' mode='date' bindcancel='cancel' bindchange='editContent' value='{{info.installation_time_start}}'>
+          <view class='titles_state' bindtap='clickSure' data-type='1'> 确定</view>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <!--弹框结束-->
+  <view class='pop-select_content' hidden='{{startTimers2}}'>
+    <view class='pop-select flexColumnH'>
+      <view class='content' style='text-align:center;line-height:120rpx'>预计结束安装时间</view>
+      <view class='flexRow sureContent'>
+        <view class='noSure' bindtap='unknown'>未定</view>
+        <picker class='Sure flexRow' style='background:#44c0c1' data-keys='installation_time_end' start="2018-01-01" end="2100-09-01" data-basic='' mode='date' bindcancel='cancel' bindchange='editContent' value='{{info.installation_time_end}}'>
+          <view class='titles_state' bindtap='clickSure' data-type='2'> 确定</view>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <!--提示-->
+  <view class='tipsBox' hidden='{{HintInfos}}'>
+    <view class='tipsTitle'>{{dataTip}}</view>
+    <view class='sures' bindtap='sures'>确定</view>
+  </view>
+
+</view>
+
+<!--客户详情-->
+<view hidden='{{itenList[2]}}'>
+
+  <view class='paddingBox listInfo'>
+    <view class='flexColumnNo'>
+      <view class='customer_item flexRow'>
+        <view wx:if="{{customerInfo.customer_type}}">
+          <view class='infoBox' style='width:100%'>
+            <view style='width:150rpx'>客户类型：</view>
+            <view style='width:550rpx'>{{customerTyle[customerInfo.customer_type]}}</view>
+          </view>
+        </view>
+        <view wx:else class='infoBox' style='width:100%'>
+          <view style='width:150rpx'>客户类型：</view>
+          <view style='width:550rpx'>暂无</view>
+        </view>
+
+      </view>
+
+      <view class='customer_item flexRow'>
+        <view class='infoBox'>
+          <view style='width:100rpx'>渠道：</view> 
+          <view style='width:250rpx'>{{propertyData[customerInfo.property]}}</view>
+        </view>
+      </view>
+      <view class='customer_item flexRow'>
+        <view class='infoBox'>
+          <view style='width:135rpx'>客户姓名:</view>
+          <view style='width:215rpx'>{{customerInfo.customerName}}</view>
+        </view>
+        <view class='infoBox'>
+          <view style='width:135rpx'>联系电话：</view>
+          <view style='width:215rpx'>{{customerInfo.customerPhone?customerInfo.customerPhone:'暂无'}}</view>
+        </view>
+      </view>
+      <!-- customer_item -->
+      <view class='flexColumnH' style='margin:10rpx 0' wx:if="{{customerInfo.consignee_address}}">
+        <view class='infoBox flexRow' style='width:100%'>
+          <view style='width:135rpx'>安装地址：</view>
+          <view style='width:550rpx'>{{customerInfo.consignee_address}}</view>
+        </view>
+      </view>
+      <view class='customer_item' style='margin:10rpx 0' wx:elif="{{customerInfo.consignee_address==null}}">
+        <view class='infoBox' style='width:100%'>
+          <view style='width:150rpx'>安装地址：</view>
+          <view style='width:550rpx'>暂无</view>
+        </view>
+      </view>
+    </view>
+    <view class='make_order' bindtap='openCreateOrder' data-customerId='{{customerInfo.customerId}}' data-type='open'>生成订单</view>
+    <!--生成订单-->
+    <view class='make_order_box' hidden='{{makeOrder}}'>
+      <view class='order_class_box'>
+        <view class='make_order_class flexColumnH'>
+          <view bindtap='sureMakeOrder' data-orderType='1'>生成销售订单</view>
+          <view bindtap='sureMakeOrder' data-orderType='2'>生成活动订单</view>
+        </view>
+        <view class='make_order_operation flexRow'>
+          <view class='cancel' data-type='close' bindtap='openCreateOrder'>取消</view>
+          <view class='sure' data-type='close' bindtap='openCreateOrder'>确认</view>
+        </view>
+      </view>
+    </view>
+
+
+  </view>
+
+
+  <!--活动记录-->
+  <view class='flexColumnH' style='border-top:20rpx solid #eee;'>
+    <view class='activityRecord paddingBox'>活动记录</view>
+    <view class='noData1' wx:if='{{customerActivity.length==0}}'>暂无数据哦！</view>
+    <block wx:for='{{customerActivity}}' wx:for-item='item' wx:key='activityId'>
+      <image src='{{item.imgurl}}' class='activityImg'></image>
+      <view style='overflow:hidden;' class='paddingBox flexRow'>
+        <view class='activityInfo'>
+          <view class='activity_info'>
+            <view>活动名称：</view>
+            <view>{{item.activityName}}</view>
+          </view>
+          <view class='activity_info' style='margin-top:10rpx;'>
+            <view>活动时间：</view>
+            <view>{{item.generalize_start}}---{{item.generalize_end}}</view>
+          </view>
+        </view>
+        <view class='activityDetails' data-id='{{item.activityId}}' bindtap='activity_detail'>活动详情</view>
+      </view>
+    </block>
+  </view>
+
+  <!--订单记录-->
+  <view class='flexColumnH' style='border-top:20rpx solid #eee;'>
+    <view class='activityRecord paddingBox'>订单记录</view>
+    <block wx:for='{{customerOrder}}' wx:for-item='order' wx:key='customerId'>
+      <view class='paddingBox orderItem'>
+        <image src='/pages/images/work/customer_info/store.png' class='store leftInfo'></image>
+        <view style='margin-left:20rpx' class='leftInfo'>订单编号:</view>
+        <view style='float:left'>{{order.order_code}}</view>
+        <view style='color:red;float:right;font-size:26rpx'>{{orderState[order.orderState]}}</view>
+        <view class='editOrders' wx:if='{{order.orderState!==4}}' bindtap='editOrderDetail' data-id='{{order.customerId}}' data-orderType='{{order.orderType}}' data-activityId="{{order.activityId}}" data-orderId='{{order.orderId}}' data-editType='edit'>编辑</view>
+      </view>
+      <view class='orderInfo flexRow'>
+        <view class='order_info flexColumnH'>
+          <view>客户姓名</view>
+          <view>{{order.customerName}}</view>
+        </view>
+        <view class='order_info flexColumnH'>
+          <view>联系方式</view>
+          <view>{{order.customerPhone}}</view>
+        </view>
+        <view class='order_info flexColumnH'>
+          <view>产品型号</view>
+          <view>{{order.product_model}}</view>
+        </view>
+        <view class='order_info flexColumnH'>
+          <view>订单金额</view>
+          <view>￥{{order.order_price}}</view>
+        </view>
+      </view>
+      <view class='orderOpationBox paddingBox'>
+        <view class='orderTime'>订单时间：{{order.createTime}}</view>
+        <view class='activityDetails' style='margin-right:20rpx' wx:if='{{order.orderState!==4}}' data-id='{{order.orderId}}' data-type='open' bindtap='cause_box'>关闭订单</view>
+        <view class='activityDetails' data-id='{{order.customerId}}' data-activityId="{{order.activityId}}" data-orderType='{{order.orderType}}' data-orderId='{{order.orderId}}' bindtap='editOrderDetail' data-editType='look'>查看详情</view>
+      </view>
+    </block>
+  </view>
+
+  <!--评价记录-->
+  <view class='flexColumnH' style='border-top:20rpx solid #eee;'>
+    <view class='activityRecord paddingBox'>评价记录</view>
+    <view class='paddingBox'>
+      <block wx:for='{{customerEvaluate}}' wx:for-item='evaluate' wx:key=''>
+        <view class='flexColumnH evaluateBox'>
+          <view class='evaluateTime'>{{evaluate.create_time}}</view>
+          <view class='evaluateContent'>{{evaluate.content}}</view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <!--关闭订单-->
+  <view class='make_order_box' hidden='{{closeOrderBox}}'>
+    <view class='close_order_boxs marginAuots flexColumnH'>
+      <textarea class='edit_cause' placeholder="{{closeOrderBox?'':'请输入关闭原因'}}" bindinput="editCause" hidden='{{closeOrderBox}}'></textarea>
+      <view class='make_order_operation flexRow'>
+        <view class='cancel' data-type='close' bindtap='cause_box'>取消</view>
+        <view class='sure' data-type='close' bindtap='sure_cause_box'>确认</view>
+      </view>
+    </view>
+  </view>
+</view>

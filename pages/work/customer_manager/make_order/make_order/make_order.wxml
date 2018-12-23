@@ -1,0 +1,214 @@
+<!--pages/work/customer_manager/make_order/make_order/make_order.wxml-->
+<!--活动订单-->
+<view class='activityBox flexColumnH' hidden='{{showHideActivity}}'>
+  <view class='activityName flexRow'>
+     <view>活动名称:</view>
+     <view>{{ActivityOrderInfo.activityName}}</view>
+  </view>
+  <view class='activityCode flexRow'>
+    <view>活动编号:</view>
+    <view>{{ActivityOrderInfo.activity_code?ActivityOrderInfo.activity_code:ActivityOrderInfo.activityCode}}</view>
+  </view>
+</view>  
+<!--客户信息-->
+<view class='infoList paddingBox flexColumnH addressBoxs'>
+  <view class='infoItem flexRow botderBottom'>
+    <view class='item'>客户姓名:{{ActivityOrderInfo.customerName}}</view>
+    <view class='item'>联系电话:{{ActivityOrderInfo.customerPhone}}</view>
+  </view>
+  <view class='flexRow'>
+    <view class='flexColumnH addressInfo'>
+      <view class='flexRow'>
+         <view class='item flexRow'>
+         <view class='flexWidth'></view>
+            <view  class='receiveName' style='width:100rpx'>收件人:</view>
+            <input type='text' class='receiveNames' disabled='{{editType=="look"}}' maxlength='8'  placeholder-style='color:#333;font-size:26rpx' value='{{_name}}' data-name='_name' bindinput='editNmae'></input>
+         </view>
+          <view class='item flexRow'>
+            <view class='flexWidth'></view>
+            <view  class='receivephone'  style='width:120rpx'>联系电话:</view>
+            <input type='text'  class='receivephones'  disabled='{{editType=="look"}}' maxlength='11' placeholder-style='color:#333;font-size:26rpx'  value='{{_phone}}'  data-name='_phone' bindinput='editNmae'></input>
+          </view>
+      </view>
+      <view class='address flexRow'>
+       <view class='flexWidth'></view>
+        <view style='width:120rpx'  class='receivephone' >省市区:</view>
+        <view class="{{location=='请选择'?'inputTips':'inputClass'}}" bindtap='chooseAddress'>{{location}}</view>
+      </view>      
+      <view class='address flexRow'>
+       <image class='addressImg' src='/pages/images/work/customer_info/location.png'></image>
+        <view style='width:120rpx'  class='receivephone' >收货地址:</view>
+        <input type='text'  disabled='{{editType=="look"}}'  class='receivephones' style='width:520rpx' placeholder-style='color:#333;font-size:26rpx'  value='{{_address}}'  data-name='_address' bindinput='editNmae'></input>
+      </view>
+      <view class='flexRow editBox'  hidden='{{editType=="look"}}'>
+        <view class='flexWidth' style='height:60rpx'></view>
+        <image src='/pages/images/work/customer_info/edit.png' class='editImg'></image>
+        <view class='selectAdress' bindtap='skinToOther' 
+       data-url='/pages/work/customer_manager/make_order/select_address/select_address?customer_id=' data-type='1'>选择现有收获地址</view>
+      </view>
+    </view>
+  </view>
+</view>
+<!--产品信息-->
+<view class='productInfo flexColumnH addressBoxs'>
+  <view class='productTitle flexRow'>
+      <view>产品型号</view>
+      <view>产品单价</view>
+      <view>数量</view>
+      <view>产品总额</view>
+  </view>
+  <view class='productListBox'>
+    <block wx:for='{{totalPriceInfo}}' wx:for-item='item' wx:for-index='index' wx:key=''>
+      <view class='productList flexRow'>
+          <image src='/pages/images/add.png' class='addImg' bindtap='addProduct' wx:if='{{index<1}}'></image>
+            <image src='/pages/images/subtract.png' class='addImg'  data-index='{{index}}' bindtap='subtractProduct' wx:if='{{index>0}}'></image>
+          <view class='product_title' bindtap='skipUpTo' data-type='2'  data-url='/pages/work/customer_manager/product_type/product_type'   data-index='{{index}}'>{{item.productModel}}</view>
+          <input type='number' bindinput='eidtPriceNum'  data-index='{{index}}' value='{{item.price}}'   maxlength='10' data-type='price' class='price' wx:if='{{item.modelType ==2}}'></input><!--价格-->
+          <view class='product_title'  wx:if='{{item.modelType ==1}}'>{{item.price}}</view><!--价格-->
+          <input type='number' bindinput='eidtPriceNum' data-index='{{index}}'  value='{{item.num}}'   maxlength='10' data-type='num' class='num'  hidden='{{editType=="look"||!isCanedit2}}'></input>
+          <view class='num'   wx:if="{{editType=='look'||!isCanedit2}}" >{{item.num}}</view>
+          <view class='product_title'>{{item.totalPrice}}</view>
+      </view>      
+    </block>
+  </view>
+</view>
+<!--活动信息-->
+<view class='flexColumnH addressBoxs'>
+  <view class='ruleItem flexRow paddingBox'>
+    <view class='flexRow ruleItemBox' style='width:50%'>
+        <view style='width:130rpx'>预付定金:</view>
+        <input type='number' class='orderPrice'  hidden='{{editType=="look"||!isCanedit2}}' value='{{prepayPrice}}' bindinput='prepayValue' ></input>
+         <view class='orderPrice'  wx:if="{{editType=='look'||!isCanedit2}}">{{prepayPrice?prepayPrice:''}}</view>
+    </view>
+    <view class='flexRow ruleItemBox' style='width:50%'>
+        <view style='width:180rpx' >本次实收金额:</view>
+        <input type='number' class='orderPrice' hidden='{{editType=="look"||!isCanedit2}}' bindinput='realityTotal' value='{{realityPeice}}'></input>
+        <view class='orderPrice'  wx:if="{{editType=='look'||!isCanedit2}}">{{realityPeice}}</view>
+    </view>    
+  </view>
+  <view class='ruleItem flexRow ruleItems'>
+    <view class='payentWays' style='width:130rpx'>付款方式:</view>
+    
+    <view class='paymentWay' style='width:200rpx;position:relative'>
+        <view class='paymentWaya'  hidden='{{editType=="look"||!isCanedit2}}'>
+          <picker class='paymentWaya'    bindchange="bindChange1"  value='{{index}}' range='{{paymentMoney}}'>
+              <view>{{paymentMoney[index]}}</view>
+          </picker>
+        </view>
+        <view  class='paymentWaya'  style='width:200rpx;position:relative' wx:if="{{editType=='look'||!isCanedit2}}" >{{paymentMoney[index]}}</view>
+        <image src='/pages/images/pulldown.png' class='pullImg' ></image>
+    </view>
+  </view>
+  <view  hidden='{{showHideActivity2}}' class='flexColumnH'>
+    <view class='raffleTime ruleItem flexRow ruleItems' hidden='{{lottery}}'>
+      <view class='payentWays' style='width:150rpx'>可抽奖次数:</view>
+      <view class='raffleNum'>{{lotteryNum}}次</view>
+    </view>
+    <view class='raffleTime ruleItem flexRow ruleItems'  hidden='{{egg}}'>
+      <view class='payentWays' style='width:150rpx'>可砸蛋次数:</view>
+      <view class='raffleNum'>{{eggNum}}次</view>
+    </view>
+    <view class='raffleTime ruleItem flexRow ruleItems'  hidden='{{gift}}'>
+      <view class='payentWays' style='width:130rpx'>满增礼品:</view>
+      <view class='raffleNum'>{{giftNum}}</view>
+    </view>
+    <view class='raffleTime ruleItem flexRow ruleItems'  hidden='{{gifts}}'>
+      <view class='payentWays' style='width:130rpx'>奖品内容:</view>
+      <view class='raffleNum'>2</view>
+    </view>
+  </view>
+</view>
+<!--优惠券-->
+<view class='flexColumnH addressBoxs' hidden='{{isCanedit}}'>
+  <view class='selectSale flexRow' bindtap='selectToTicket' data-type='1' hidden='{{!ActivityOrderInfo.hb}}'>
+    <view class='selectName'>选择红包</view>
+    <view class='selectContent' >{{selectToData[1].denomination?'-'+selectToData[1].denomination:''}}</view>
+    <image src='/pages/images/right.png' class='rights'></image>
+  </view>
+  <view class='selectSale flexRow'  bindtap='selectToTicket' data-type='2' hidden='{{!ActivityOrderInfo.yhq}}'>
+    <view class='selectName'>选择优惠券</view>
+    <view class='selectContent'>{{selectToData[2].denomination?'-'+selectToData[2].denomination:''}}</view>
+    <image src='/pages/images/right.png' class='rights'></image>
+  </view>
+  <view class='selectSale flexRow'  bindtap='selectToTicket' data-type='3'  hidden='{{!ActivityOrderInfo.zkq}}'>
+    <view class='selectName'>选择折扣券</view>
+    <view class='selectContent'>{{selectToData[3].denomination?selectToData[3].denomination+'折':''}}</view>
+    <image src='/pages/images/right.png' class='rights' ></image>
+  </view>
+
+</view>
+<!--选择优惠-->
+<view class='positionBox' hidden='{{showHidePop}}'>
+  <view class='pop_up_box flexColumnH'>
+      <view class='selectTile'>{{selectData[selectType].title}}</view>
+      <scroll-view scroll-y='true' style='height:590rpx'>
+        <view class='selectList flexColumnH' >
+          <block wx:for = '{{ActivityOrderInfo[selectData[selectType].key]}}' wx:for-item = 'item' wx:key='use_condition' wx:for-index='index'>
+            <view  class='selectItem flexRow' style='height:80rpx'>
+                <view class='fullSubtract' wx:if='{{selectData[selectType].key=="hb"}}'>可使用红包{{item.denomination}}元</view>
+                <view class='fullSubtract' wx:if='{{selectData[selectType].key=="yhq"}}' >满{{item.use_condition}}减{{item.denomination}}</view>
+                <view class='fullSubtract' wx:if='{{selectData[selectType].key=="zkq"}}'>满{{item.use_condition}}打{{item.denomination}}折</view>
+                <image src='/pages/images/select.png' bindtap='selectToValue' class='selectImg' data-id='{{item.id}}'  wx:if='{{item.choose}}' data-opaction = '1'></image>
+                <image src='/pages/images/noSelect.png'  bindtap='selectToValue' class='selectImg'  wx:else  data-id='{{item.id}}' data-opaction = '0'></image>              
+            </view>           
+          </block>
+        </view>
+      </scroll-view>
+      <view class='submit' bindtap='cancelPop'>关闭</view>
+  </view>
+</view>
+<!--实收金额-->
+<view style='overflow:hidden'>
+    <view class='totalSalePrice' style='line-height:80rpx'>订单总额：￥{{showPrice}}</view>
+    <view class='sale' style='line-height:80rpx'>已优惠：￥{{showValues?showValues:0}}</view>
+</view>
+<!--备注-->
+<view class='flexColumnH'>
+  <view class='remark flexRow'>
+      <image src='/pages/images/wenhao.png' class='wenhao'></image>
+      <view >备注</view>
+  </view>
+  <textarea class='remarkText paddingBox'  disabled='{{editType=="look"}}' value='{{remarkText}}' maxlength='-1' placeholder='请输入内容'  bindinput='writeText'  hidden='{{textareHidea}}'></textarea>
+</view>
+<!--说明-->
+<view class='flexColumnH'>
+  <view class='remark flexRow'>
+      <image src='/pages/images/gantanhao.png' class='wenhao'></image>
+      <view >说明</view>
+  </view>
+  <view class='explain'>{{ActivityOrderInfo.explain?ActivityOrderInfo.explain:'暂无'}}</view>
+</view>
+<!--专属店员-->
+  <view class='flexColumnH belongTo paddingBox'>
+    <view class='flexRow'>
+      <view class='item'>专属店员姓名:{{ActivityOrderInfo.sellerName}}</view>
+      <view class='item'>专属店员电话:{{ActivityOrderInfo.sellerPhone}}</view>
+    </view>
+    <view  class='flexRow'>
+       <view  class='item'>打单员:{{typistName}}</view>
+      <view  class='item'>打单员电话:{{typistPhone}}</view>
+    </view>
+  </view>
+<!--提交按钮-->
+<view class='submit' bindtap='submitData' hidden='{{editType=="look"}}'>提交</view>
+
+<!--地址弹框-->
+  <view class="pickerViewContainer" hidden='{{addressPicker_hidden}}'>
+      <view class="pickerViewOperate">
+        <view bindtap="pickerViewCancel">取消</view>
+        <view bindtap="pickerViewSubmit">确定</view>
+      </view>
+      <view>
+        <picker-view class="pickerView" indicator-style="height: 50px;" value="{{addressArr}}" bindchange="addressChange">
+          <picker-view-column>
+            <view wx:for="{{provinceArr}}" class="pickerColumn" wx:key="code">{{item.name}}</view>
+          </picker-view-column>
+          <picker-view-column>
+            <view wx:for="{{cityArr}}" class="pickerColumn" wx:key="code">{{item.name}}</view>
+          </picker-view-column>
+          <picker-view-column>
+            <view wx:for="{{areaArr}}" class="pickerColumn" wx:key="code">{{item.name}}</view>
+          </picker-view-column>
+        </picker-view>
+      </view>
+  </view>

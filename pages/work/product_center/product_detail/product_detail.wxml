@@ -1,0 +1,133 @@
+<!--pages/work/product_center/product_detail/product_detail.wxml-->
+<import src="/pages/plugs/wxParse/wxParse.wxml"/>
+
+<view style='width:750rpx;overflow:hidden'>
+<!--轮播-->
+    <view class='productDetailBox'>
+      <swiper indicator-dots='true' indicator-color='rgba(71,189,193,1)' circular='true' autoplay='false' duration='1000' class='detail_swiper'>
+        <block wx:for="{{productData.img}}" wx:for-item='item' wx:key='imgurl'>
+           <swiper-item>
+              <image src='{{item.imgurl}}' style='width:100%;height:100%;'></image>
+           </swiper-item>
+        </block>
+      </swiper>
+    </view>
+<!--标题二维码-->
+  <view class='product_titles'>
+      <view class='productText'>
+          <view class='hiddenLien titles'>{{productData.info.product_title}}</view>
+          <view class='money'>¥{{productData.info.min_price}}~{{productData.info.max_price}}</view>
+      </view>
+      <view class='erweima' >
+         <image src='{{codeImage}}'  bindtap='hiddenShowErWeiMa' data-type='open' ></image>
+      </view>
+  </view>
+  <!--选择属性-->
+  <view class='class_select_box' bindtap='select_to_go'>
+      <view style='font-size:28rpx;margin-left:20rpx'>选择属性</view>
+      <view style='color:red;font-size:20rpx;margin-top:8rpx;'>(必选)</view>
+      <image src='/pages/images/right.png' class='to_right'></image>
+  </view>
+  <!-- <view class='text'>------继续拖动，查看图文详情------</view> -->
+
+  <view class='imageTextDeteail'>
+    <view class='menu {{detailsData[0]}}' data-detail='0' bindtap='switchButton'>图文详情</view>
+    <view class='menu {{detailsData[1]}}' data-detail='1' bindtap='switchButton'>产品参数</view>
+  </view>
+  <!--活动详情-->
+  <view class='showDetail' hidden='{{showDetails[0]}}'>
+      <template is="wxParse" data="{{wxParseData:details.nodes}}"/>
+      <view class='botton_line'>-----我是底线-----</view>
+  </view>
+  <view class='product_param' hidden='{{showDetails[1]}}'>
+  <block wx:for='{{productData.attr}}' wx:for-item = 'item' wx:key='name'>
+      <view class='menu_param'>
+        <view>{{item.name}}</view>
+        <view>{{item.value}}</view>
+      </view>
+  </block>
+  </view>
+  <!--属性-->
+  <view class='specificationDetailBox' hidden='{{hiddenShow}}'>
+    <view class='specificationDetail'>
+      <view class='prdduct_detail_box'>
+        <view style='width:250rpx;height:250rpx'>
+          <view  class='product_img'>
+            <image src='{{productInfo.color_url}}'></image>
+          </view>
+        </view>
+        <view class='product_text'>
+          <view style='color:#4abdc2'>￥{{productInfo.price}}</view>
+          <view>库存{{productInfo.stock}}件</view>
+          <view>请选择颜色</view>
+        </view>
+        <image src='/pages/images/quit.png' style='width:40rpx;height:40rpx' bindtap='detailHiddenShow'></image>
+      </view>
+      <scroll-view scroll-y='true' style='height:500rpx'>
+        <view class='product_color_box paddingBox' >
+          <view class='attribute'>颜色</view>
+          <view class='color_list paddingBox'>
+              <block wx:for='{{colorNature}}' wx:key='{{index}}' wx:for-item='item' wx:for-index='index'>
+                <view class='color_item {{colorData[index]}}' data-indexs='{{index}}' data-color='{{item}}' bindtap='select_color'>{{item}}</view>
+              </block>
+          </view>
+        </view>
+        <view class='product_color_box paddingBox' style='margin-bottom:100rpx;'>
+          <view class='attribute'>规格</view>
+          <view class='specification_list paddingBox' style='flex-flow:row wrap' >
+            <block wx:for='{{specification}}' wx:key='{{index}}' wx:for-item='item' wx:for-index='index'>
+                <view class='specification_item {{specificationData[index]}}' data-id='{{item.id}}'  data-indexs='{{index}}' bindtap='select_specification' >{{item.standard}}</view>
+            </block>
+          </view>
+        </view> 
+      </scroll-view>
+    </view>
+  </view>
+  <!--二维码大小-->
+  <view class='big_erweima_box paddingBox' hidden='{{qrShowHidden}}'>
+    <view>
+      <image src='/pages/images/delete.png' class='close'  bindtap='hiddenShowErWeiMa' data-type='close' ></image>
+    </view>
+    <view class='bigErweiMaImg'>
+      <image src='{{codeImage}}' style='width:100%;height:100%;'></image>
+    </view>
+    <view>
+      <image src='/pages/images/download.png' class='downLoad' bindtap='loadErWeiMa' ></image>
+    </view>
+  </view>
+</view>
+
+<!-- <view class='makeCard' bindtap='makeCard' hidden='{{makeCard}}'>分享</view> -->
+<view class='makeCard' bindtap='maskPopup' hidden='{{makeCard}}'>分享</view>
+<view class="canvasBox" >
+  <canvas canvas-id="myCanvas" class="canvas"/>
+</view>
+<!--动态框-->
+<import src="../../../template/template.wxml"/>
+<view hidden='{{gift}}'>
+  <template is='waitImg'/>
+</view>
+
+
+<!-- 点击分享底部弹出动态弹框 -->
+<view class='maskPopup' hidden='{{threeBtn}}'>
+  <!-- 底部按钮 -->
+  <view class='btnsBox flexColumnH' hidden='{{btnHidden}}'>
+    <view class='btnCard' bindtap='shareFriend'>分享给朋友</view>
+    <view class='btnCard' bindtap='makeCard'>生成海报</view>
+    <view class='btnCard' bindtap='maskHidden'>取消</view>
+  </view>
+  <!-- 用户输入框 -->
+  <view class='flexColumnH sharecontents' hidden='{{isShare}}'>
+    <view  style='height:300rpx'>
+      <textarea type='text' data-values='{{shareName}}' placeholder='最多可输入18个字' placeholder-style='font-size:24rpx;' maxlength='18' bindinput='editShareValues' class='inputMBox'></textarea>
+      <!-- <input type='text' data-values='{{shareName}}' maxlength='18' bindinput='editShareValues' class='inputMBox'/> -->
+    </view>
+    
+    <view class='textBtn flexRow'>
+      <view class='care' style='color:#4abdbf;background:#fff' data-values='1' bindtap='editShare'>取消</view>
+      <button class='sure' data-values='2' open-type='share' bindtap='editShare'>确定</button>
+      <!-- <view class='sure' data-values='2' bindtap='editShare'>确定</view> -->
+    </view>
+  </view>
+</view>

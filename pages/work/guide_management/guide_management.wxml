@@ -1,0 +1,62 @@
+<view class='list paddingBox flexRow'>
+  <view class='item_li {{guideList[0]}}' data-item='0' bindtap='click_request_data'>全部</view>
+  <view class='item_li {{guideList[1]}}' data-item='1' bindtap='click_request_data'>未登录</view>
+  <view class='item_li {{guideList[2]}}' data-item='2' bindtap='click_request_data'>已登录</view>
+
+</view>
+
+<view class='all_order flexColumn'>
+  <view class='search_box paddingBox flexRow'>
+    <view class='search'>
+      <image src='/pages/images/search.png' bindtap='search' data-type='1'></image>
+      <input class='search_input' data-type='2' placeholder='请输入姓名' placeholder-style='margin-left:20rpx' bindconfirm='search' bindblur='blurGetData'></input>
+    </view>
+  </view>
+</view>
+
+<!-- <block wx:for='{{listState}}'  wx:for-item='guides' wx:key=''  >
+  <view hidden='{{guides}}'> -->
+<view class='noData' wx:if='{{guideData.length==0}}'>暂无数据哦！</view>
+<view class='flexColumnH'>
+  <block wx:for='{{guideData}}' wx:key='*this'>
+    <view class='names flexColumnH'>
+      <view class='flexRow guideInfo'>
+        <view class='flexRow'>
+          <view style='color:#4cbac0'>姓名:</view>
+          <view>{{item.name}}</view>
+        </view>
+        <view class='flexRow'>
+          <view style='color:#4cbac0'>状态:</view>
+          <view>{{item.login_state}}</view>
+        </view>
+      </view>
+      <view class='listInfo flexRow'>
+        <view class='itemInfo'>
+          <view>订单数量</view>
+          <view>{{item.sum_order}}</view>
+        </view>
+        <view class='itemInfo'>
+          <view>总额</view>
+          <view>{{item.sum_order_price}}</view>
+        </view>
+        <view class='itemInfo'>
+          <view>积分</view>
+          <view>{{item.sum_point}}</view>
+        </view>
+        <view class='itemInfo'>
+          <view>推广数量</view>
+          <view>{{item.orderNumAvg}}</view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>
+
+<!-- </view>
+</block> -->
+
+<!--动态框-->
+<import src="../../template/template.wxml" />
+<view hidden='{{gift}}'>
+  <template is='tips_box' />
+</view>

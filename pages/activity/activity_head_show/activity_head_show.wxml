@@ -1,0 +1,9 @@
+<!--pages/activity/activity_head_show/activity_head_show.wxml-->
+<view class='head_show_img'>
+  <block  wx:for="{{headImgNum}}" wx:for-item="item"  wx:key="head_url">
+      <image src=' {{item.head_url}}' class='headerImgs'></image> 
+  </block>
+</view>
+<view  hidden="{{img_show_hide}}" class='no_join'>
+  <image src='/pages/images/activity/activity.png'></image>
+</view>

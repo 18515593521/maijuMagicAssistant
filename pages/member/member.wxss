@@ -1,0 +1,86 @@
+.paddingBox{
+  padding: 0 20rpx;
+}
+.topli{
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+  font-size: 36rpx;
+ 
+}
+.topul{
+  height: 250rpx;
+  margin-top: 5rpx;
+  border-bottom:10rpx solid #8f8b8b;
+}
+.bottomli{
+  margin-top: 15rpx;
+  margin-bottom: 15rpx;
+  display: flex;
+  justify-content: flex-start;
+}
+.bottomli input{
+  margin-left: 30rpx;
+  border:1px solid #eee;
+  
+}
+.radioL{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20rpx;
+}
+.requie{
+  width: 150rpx;
+  height: 60rpx;
+  font-size: 30rpx;
+  background-color: #4abcc2;
+  color: white;
+  border-radius: 10rpx;
+  text-align:center;
+  line-height: 60rpx;
+  margin-left: 285rpx;
+  margin-top: 20rpx;
+}
+.vipbg{
+  width:400rpx;
+  height:200rpx;
+  margin-left: 30rpx;
+  position: relative;
+}
+.vipBox{
+  width:750prx;
+  position:relative;
+  margin-top: 60rpx;
+  display: flex;
+  flex-direction:row;
+  }
+
+.viptext{
+  font-size: 30rpx;
+  margin-top: 30rpx;
+  margin-left: 20rpx;
+}
+.vipName{
+  display: flex;
+  flex-direction:column;
+}
+.vipTextBox{
+  position:absolute;
+  margin:auto;
+  top:241rpx;
+  left:0;
+  right:0;
+  text-align:center;
+  color:#fff;
+}
+.vipName{
+  font-size:24rpx;
+}
+.vipNumber{
+  font-size:24rpx;
+  margin-top:20rpx;
+}
+.vipShow{
+  position: absolute;
+  left: 200rpx;
+  top: 105rpx;
+}

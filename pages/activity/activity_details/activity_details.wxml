@@ -1,0 +1,117 @@
+<!--pages/activity/activity_details/activity_details.wxml-->
+<import src="/pages/plugs/wxParse/wxParse.wxml" />
+
+<view calss="activity_box">
+
+  <view class='activit_list' style='border-top:0;border-bottom:10rpx solid #eee'>
+    <image src='{{activityDetailData.imgurl}}' mode='widthFix' class='activity_img'></image>
+    <view class='activity_name' style='font-size:30rpx;padding:20rpx 20rpx 5rpx；color:#333'>{{activityDetailData.name}}</view>
+    <view class='icon_look_num'>
+      <image src='/pages/images/activity/eye.png' class='icon_eye'></image>
+      <view class='look_num'>{{activityDetailData.look}}</view>
+    </view>
+  </view>
+
+  <view class='apply_name_content'>
+    <view class='apply_name_list'>
+      <view class='apply_num'>
+        <view class='apply_text'>{{activityDetailData.pictures.length}}</view>
+        <view class='apply_text'>人报名</view>
+      </view>
+      <view class='head_img_content' bindtap="skip_to_head">
+        <block wx:for="{{activityDetailData.pictures}}" wx:for-item="item" wx:key="head_url">
+          <image src='{{item.head_url}}' class='headerImgs'></image>
+        </block>
+      </view>
+      <view class='rightTarrows' bindtap="skip_to_head">
+        <image src='/pages/images/activity/rightarrows.png'></image>
+      </view>
+    </view>
+    <view class='apply_name_list'>
+      <view class='activity_timer_icon'>
+        <image src='/pages/images/activity/timer.png'></image>
+      </view>
+      <view class='activity_time'>
+        <view class='activity_text'>活动时间：{{activityDetailData.start_time}}---{{activityDetailData.end_time}}</view>
+      </view>
+    </view>
+    <view class='apply_name_list'>
+      <view class='activity_timer_icon'>
+        <image src='/pages/images/activity/option.png'></image>
+      </view>
+      <view class='activity_time'>
+        <view class='activity_text'>活动地点：{{activityDetailData.stage}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class='activity_rule'>
+    <view class='activity_title'>
+      <view class='mark'></view>
+      <view class='mark_title'>活动规则</view>
+    </view>
+    <view class='activity_car' wx:for="{{activityDetailData.itmes}}" wx:for-item="item" wx:key="view_msg">{{item.view_msg}}</view>
+  </view>
+
+  <view class='activity_rule'>
+    <view class='activity_title'>
+      <view class='mark'></view>
+      <view class='mark_title'>活动详情</view>
+    </view>
+    <view class='activity_car'>
+      <template is="wxParse" data="{{wxParseData:details.nodes}}" />
+    </view>
+  </view>
+
+  <view class='activity_rule'>
+    <view class='activity_title'>
+      <view class='mark'></view>
+      <view class='mark_title'>往期活动</view>
+    </view>
+    <view style='margin-bottom:80rpx'>
+      <scroll-view scroll-x="true" style='height:200rpx;' class='scroll_view_activity'>
+        <view class='activity_list' wx:for="{{pastActivityDataGuide}}" wx:for-item="item" wx:key="imgurl" bindtap='skips' data-ids='{{item.id}}'>
+          <image src='{{item.imgurl}}'></image>
+          <view class='activity_view_name'>{{item.name}}</view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+
+</view>
+<view class='makeCard' bindtap='maskPopup' hidden='{{makeCard}}'>分享</view>
+<!--<view class='makeCard' bindtap='makeCard' hidden='{{makeCard}}'>分享朋友圈卡片</view>-->
+<!--生成海报的按钮-->
+<!-- 未知 -->
+<view class="canvasBox">
+  <canvas canvas-id="myCanvas" class="canvas" />
+</view>
+<!--动态框-->
+<import src="../../template/template.wxml" />
+<view hidden='{{gift}}'>
+  <template is='waitImg' />
+</view>
+<!--动态弹框从底部弹起-->
+
+
+<!-- 点击分享底部弹出动态弹框 -->
+<view class='maskPopup' hidden='{{threeBtn}}'>
+  <!-- 底部按钮 -->
+  <view class='btnsBox flexColumnH' hidden='{{btnHidden}}'>
+    <view class='btnCard' bindtap='shareFriend'>分享给朋友</view>
+    <view class='btnCard' bindtap='makeCard'>生成海报</view>
+    <view class='btnCard' bindtap='maskHidden'>取消</view>
+  </view>
+  <!-- 用户输入框 -->
+  <view class='flexColumnH sharecontents' hidden='{{isShare}}'>
+    <view  style='height:300rpx'>
+      <textarea type='text' data-values='{{shareName}}' placeholder='最多可输入18个字' placeholder-style='font-size:24rpx;' maxlength='18' bindinput='editShareValues' class='inputMBox'></textarea>
+      <!-- <input type='text' data-values='{{shareName}}' maxlength='18' bindinput='editShareValues' class='inputMBox'/> -->
+    </view>
+    <view class='textBtn flexRow'>
+      <view class='care' style='color:#4abdbf;background:#fff' data-values='1' bindtap='editShare'>取消</view>
+      <button class='sure' data-values='2' open-type='share' bindtap='editShare'>确定</button>
+      <!-- <view class='sure' data-values='2' bindtap='editShare'>确定</view> -->
+    </view>
+  </view>
+</view>

@@ -1,0 +1,14 @@
+<!--pages/work/customer_manager/product_type/product_type.wxml-->
+
+<view class='searchBox paddingBox'>
+    <input type='text' class='searchText' confirm-type='done' bindconfirm ='searchText' data-type='2' bindblur='searchContent' ></input>
+    <image src='/pages/images/search.png' class='searchImg' bindtap='searchText' data-type='1'></image>
+</view>
+<view class='list paddingBox'>
+<view class='itemText'>产品型号列表</view>
+  <block wx:for='{{searchAllData}}' wx:key='' >
+     <view class='item' data-id='{{item.id}}' data-model='{{item.model}}' data-type='1'   data-price='{{item.price}}' bindtap='skipUpTo'>{{item.model}}</view>
+  </block>
+  <view class='noItem'>暂无数据</view>
+  <view class='addProduct' hidden='{{addProduct}}'  data-type='2'  data-price='0'    bindtap='skipUpTo'>添加产品</view>
+</view>

@@ -1,0 +1,67 @@
+<!--pages/work/customer_manager/user_file/user_file.wxml-->
+
+
+<!-- 未点击标签客户（无弹框弹出）时 -->
+<view class='all_orders flexColumn'>
+  <view class='search_box paddingBox flexRow'>
+    <view class='search'>
+      <image src='/pages/images/search.png' bindtap='search' data-type='1'></image>
+      <input class='search_input' data-type='2' placeholder='请输入姓名或联系方式搜索' placeholder-style='margin-left:20rpx' bindconfirm='search' bindblur='blurGetData'></input>
+    </view>
+  </view>
+</view>
+
+<!--列表-->
+ <block wx:for='{{titleList}}' wx:item='order' wx:for-index='current' wx:key='ids'> 
+  <view hidden='{{itenList[current]}}' class='positionTop'>
+    <!--暂无数据-->
+    <view class='available' wx:if='{{customerInfo.length==0}}'>----暂无数据----</view>
+    <view class='user_info_list flexColumn' hidden='{{adminShow}}'>
+      <!--有数据-->
+      <block wx:for='{{customerInfo}}' wx:for-item='item' wx:key='id'>
+        <view class='user_info_item flexRow'>
+          <view class='info_item_box '>
+            <view>客户姓名</view>
+            <view>{{item.name}}</view>
+          </view>
+          <view class='info_item_box '>
+            <view>联系电话</view>
+            <view>{{item.phone}}</view>
+          </view>
+          <view class='info_item_box '>
+            <view>推广数量</view>
+            <view>{{item.generalized_num?item.generalized_num:''}}</view>
+          </view>
+          <view class='info_item_box '>
+            <view>专属导购</view>
+            <view>{{item.seller_name?item.seller_name:''}}</view>
+          </view>
+        </view>
+      </block>
+    </view>
+    <!--以上是后台，以下是导购-->
+    <view class='user_info_list flexColumn' hidden='{{customerShow}}'>
+      <block wx:for='{{customerInfo}}' wx:for-item='item' wx:key='customerId'>
+        <view class='user_info_item flexRow'>
+          <view class='info_item_box '>
+            <view>客户姓名</view>
+            <view>{{item.name}}</view>
+          </view>
+          <view class='info_item_box '>
+            <view>联系电话</view>
+            <view>{{item.phone}}</view>
+          </view>
+          <view class='info_item_box '>
+            <view>订单总额</view>
+            <view>{{item.order_price?item.order_price:0}}</view>
+          </view>
+           <view class='info_item_box '>
+            <view>推广数量</view>
+            <view>{{item.inviterNum?item.inviterNum:0}}</view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+ </block> 
+<!--列表-->

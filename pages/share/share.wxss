@@ -1,0 +1,27 @@
+ /*模态框*/
+ @import "/pages/template/template.wxss"; 
+/* pages/share/share.wxss */
+.images{
+  width:750rpx;
+  height:1206rpx;
+  display:block;
+}
+.goTo{
+width:310rpx;
+height:300rpx;
+position:absolute;
+margin:auto;
+top:550rpx;
+right:0;
+left:0;
+bottom:0;
+}
+.waitsImage{
+  position:absolute;
+  margin:auto;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background:rgba(0, 0, 0, 0.6);
+}

@@ -1,0 +1,106 @@
+<view>
+  <view class='flexRow paddingBox3' bindtap='selectCustomer' wx:if='{{types==2}}'>
+    <view class='userInfo'>
+      <image src='/pages/images/work/userinfo.png'></image>
+    </view>
+    <view class='infos justBetween flexRow'>
+      <view class='names'>选择客户</view>
+      <view class='selectTile' style='color:#a6a6a6'>{{customer_name}}</view>
+    </view>
+    <view class='rights'>
+      <image src='/pages/images/right.png' class='img2'></image>
+    </view>
+  </view>
+
+  <view class='flexRow paddingBox3' bindtap='selectTimers' data-type='1'>
+    <view class='userInfo '>
+      <image src='/pages/images/work/time.png'></image>
+    </view>
+    <view class='infos justBetween flexRow'>
+      <view class='names'>选择任务时间</view>
+      <view class='selectTile' style='color:#999'>{{dateTimeArray[0][dateTime[0]]}}/{{dateTimeArray[1][dateTime[1]]}}/{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}</view>
+    </view>
+    <view class='rights'>
+      <image src='/pages/images/right.png' class='img2'></image>
+    </view>
+  </view>
+
+  <view class='flexRow paddingBox3'>
+    <view class='userInfo '>
+      <image src='/pages/images/work/set.png'></image>
+    </view>
+    <view class='infos justBetween flexRow'>
+      <view class='names'>设置任务内容</view>
+      <view class='selectTile'></view>
+    </view>
+    <view class='rights'></view>
+  </view>
+
+  <view class='paddingBox'>
+    <textarea class='remarkText paddingBox' value='{{remarkText}}' placeholder='请输入任务内容' bindinput='writeText'></textarea>
+  </view>
+  <view class='flexRow paddingBox3'>
+    <view class='userInfo '>
+      <image src='/pages/images/work/timer.png'></image>
+    </view>
+    <view class='infos justBetween flexRow' style='width:640rpx'>
+      <view class='names'>设置任务提醒</view>
+      <view class='selectTile setTask' bindtap='selectTimers' data-type='2'>添加 +</view>
+    </view>
+  </view>
+
+  <view class='flexRow2 timersList'>
+    <block wx:for='{{setTaskTimeArr}}'>
+      <view class='timersItem flexRow'>
+        <view>{{item}}</view>
+        <view class='close' data-index='{{index}}' bindtap='delect'>
+          <image src='/pages/images/quit.png'></image>
+        </view>
+      </view>
+    </block>
+  </view>
+  <form class='pay' report-submit='true' bindsubmit='skipUpTo'>
+    <button form-type='submit' class='submit' data-type='1' data-url=''>提交</button>
+  </form>
+</view>
+
+
+
+
+
+
+
+<view class='selectBox flexColumnH' hidden='{{selectTime}}'>
+  <view class='flexRow opaction  justBetween' hidden='{{opactionButton}}'>
+    <!---任务时间-->
+    <view bindtap='sureCancel' data-type='0'>取消</view>
+    <view bindtap='sureCancel' data-type='1'>确定</view>
+  </view>
+  <view class='flexRow opaction  justBetween' wx:if='{{opactionButton}}'>
+    <view bindtap='sureCancel' data-type='0'>取消</view>
+    <form class='pay' report-submit='true' bindsubmit='sureCancel' data-type='1'>
+      <button form-type='submit' data-type='1' data-url='' class='sureCancels'>确定</button>
+    </form>
+    <!-- <view bindtap='sureCancel' data-type='1'>确定</view> -->
+  </view>
+  <picker-view bindchange="bindPickerChange" class='selectTimes' value="" mode='multiSelector'>
+    <picker-view-column>
+      <view wx:for="{{dateTimeArray[0]}}" style="line-height: 100rpx" wx:key='*this'>{{item}}年</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{dateTimeArray[1]}}" style="line-height: 100rpx" wx:key='*this'>{{item}}月</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{dateTimeArray[2]}}" style="line-height: 100rpx" wx:key='*this'>{{item}}日</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{dateTimeArray[3]}}" style="line-height: 100rpx" wx:key='*this'>{{item}}时</view>
+    </picker-view-column>
+    <!-- <picker-view-column>
+      <view wx:for="{{dateTimeArray[4]}}" style="line-height: 100rpx" wx:key='*this'>{{item}}分</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{dateTimeArray[5]}}" style="line-height: 100rpx" wx:key='*this'>{{item}}秒</view>
+    </picker-view-column> -->
+  </picker-view>
+</view>

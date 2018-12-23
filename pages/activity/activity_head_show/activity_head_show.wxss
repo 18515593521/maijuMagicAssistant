@@ -1,0 +1,27 @@
+/* pages/activity/activity_head_show/activity_head_show.wxss */
+.no_join {
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:10000;
+  background:#fff;
+}
+.no_join image{
+  width:100%;
+  height:100%;
+  display:block;
+}
+.head_show_img{
+  overflow:hidden;
+  padding:20rpx;
+ box-sizing:border-box;
+}
+.head_show_img image{
+  width:100rpx;
+  height:100rpx;
+  float:left;
+  border-radius:50rpx;
+  margin:10px;
+}

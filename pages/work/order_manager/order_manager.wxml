@@ -1,0 +1,76 @@
+<!--pages/work/customer_manager/user_file/user_file.wxml-->
+<view class='list paddingBox flexRow' style='padding:10rpx 20rpx'>
+  <view class='item_li {{orderList[0]}}'  data-item='0' bindtap='click_request_data'>全部</view>
+  <view class='item_li {{orderList[1]}}'  data-item='1' bindtap='click_request_data'>待支付</view>
+  <view class='item_li {{orderList[2]}}'  data-item='2' bindtap='click_request_data'>待安装</view>
+  <view class='item_li {{orderList[3]}}'  data-item='3' bindtap='click_request_data'>已完成</view>
+  <view class='item_li {{orderList[4]}}'  data-item='4' bindtap='click_request_data'>关闭</view>
+</view>
+<view class='all_order flexColumn'>
+  <view class='search_box paddingBox flexRow' >
+    <view class='search'>
+      <image src='/pages/images/search.png' bindtap='search' data-type='1'></image>
+      <input  class='search_input'  data-type='2' placeholder='请输入姓名或联系方式搜索' placeholder-style='margin-left:20rpx' bindconfirm='search' bindblur='blurGetData' ></input>
+     
+    </view>
+      <view class='select_list'>
+        <picker range='{{propertyData}}' bindchange="bindPickerChange" value="{{orderType?orderType:0}}" class='from_text'>
+          <view>{{orderType?propertyData[orderType]:propertyData[0]}}</view>
+        </picker>
+        <image src='/pages/images/pulldown.png' class='pullDown'></image>
+    </view>
+  </view>
+</view>
+
+<!--订单记录-->
+<block wx:for='{{listState}}' wx:key=''>
+  <view class='flexColumnH' style='border-top:20rpx solid #eee;' hidden='{{item}}'>
+    <view class='noData' wx:if='{{orderListData.length==0}}'>暂无数据哦！</view>
+    <block wx:for='{{orderListData}}' wx:for-item='order'  wx:key='customerId'>
+      <view class='paddingBox orderItem'>
+        <image src='/pages/images/work/customer_info/store.png' class='store leftInfo'></image>
+        <view style='margin-left:20rpx' class='leftInfo'>订单编号:</view>
+        <view style='float:left'>{{order.orderCode}}</view>
+        <view style='color:red;float:right;font-size:26rpx'>{{orderStateData[order.orderState]}}</view>
+        <view class='editOrders' wx:if='{{order.orderState!==4}}' bindtap='editOrderDetail'  data-id='{{order.customerId}}'  data-orderType = '{{order.orderType}}' data-detail = 'edit'  data-activityId="{{order.activityId}}" data-orderId='{{order.orderId}}'  data-editType='edit'>编辑</view>
+        <!-- <image src='/pages/images/work/customer_info/print.png' class='print'></image>
+        <image src='/pages/images/work/customer_info/edit.png' class='edit'></image> -->
+      </view>
+      <view class='orderInfo flexRow'> 
+          <view class='order_info flexColumnH'>
+              <view>客户姓名</view>
+              <view>{{order.customerName}}</view>
+          </view>
+          <view class='order_info flexColumnH'>
+              <view>联系方式</view>
+              <view>{{order.customerPhone?order.customerPhone:'暂无'}}</view>
+          </view>
+          <view class='order_info flexColumnH'>
+              <view>产品型号</view>
+              <view>{{order.productModel?order.productModel:'暂无'}}</view>
+          </view>
+          <view class='order_info flexColumnH'>
+              <view>订单金额</view>
+              <view>￥{{order.orderPrice?order.orderPrice:'暂无'}}</view>
+          </view>
+      </view>
+      <view class='orderOpationBox paddingBox'>
+        <view class='orderTime'>订单时间：{{order.createTime}}</view>
+        <view class='activityDetails' style='margin-right:20rpx' wx:if='{{order.orderState!==4}}'  data-id='{{order.orderId}}'  data-type='open' data-customerId='{{order.customerId}}'  bindtap='cause_box'>关闭订单</view>
+        <view class='activityDetails' data-id='{{order.customerId}}'  data-activityId="{{order.activityId}}"  data-orderType = '{{order.orderType}}' data-detail = 'detail'  data-orderId = '{{order.orderId}}'  bindtap='editOrderDetail' data-editType='look'>查看详情</view>
+      </view>
+    </block>
+  </view>
+</block>
+
+
+<!--关闭订单-->
+<view class='make_order_box' hidden='{{closeOrderBox}}'>
+  <view class='close_order_boxs marginAuots flexColumnH'>
+    <textarea class='edit_cause' placeholder="{{closeOrderBox?'':'请输入关闭原因'}}" bindinput="editCause"></textarea>
+    <view class='make_order_operation flexRow'>
+      <view class='cancel' data-type='close' bindtap='cause_box'>取消</view>
+      <view class='sure'  data-type='close' bindtap='sure_cause_box'>确认</view>
+    </view>
+  </view>
+</view>

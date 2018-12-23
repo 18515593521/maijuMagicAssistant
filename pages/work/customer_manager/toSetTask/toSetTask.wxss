@@ -1,0 +1,134 @@
+.userInfo{
+  width:80rpx;
+  height:60rpx;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.userInfo image{
+  width:40rpx;
+  height:40rpx;
+}
+.infos{
+  width:590rpx;
+
+}
+.infos view{
+  line-height:60rpx;
+  font-size:30rpx;
+}
+.names{
+  color:#333333;
+
+}
+.selectTile{
+  font-size:26rpx;
+}
+.rights{
+  width:80rpx;
+  height:60rpx;
+   justify-content:center;
+  align-items:center;
+  display:flex; 
+  text-align:center;
+}
+.rights image{
+  width:50rpx;
+  height:50rpx;
+} 
+.selectBox{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:#fff;
+}
+.selectTimes{
+  width:750rpx;
+  height:440rpx;
+  background:#fff;
+}  
+.selectTimes view{
+  text-align:center;
+  font-size:30rpx;
+}
+.opaction{
+  width:750rpx;
+  line-height:60rpx;
+  border-top:2rpx solid #4abdc2;
+  padding:0 20rpx;
+  box-sizing:border-box;
+
+}
+.close{
+  width:80rpx;
+  height:60rpx;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin-left:20rpx;
+}
+.close image{
+  width:40rpx;
+  height:40rpx;
+}
+.opaction view{
+  font-size:32rpx;
+}
+ .paddingBox3{
+  padding:10rpx 0;
+  box-sizing:border-box;
+   border-bottom:2rpx solid #eee; 
+ }
+ .remarkText{
+   width:710rpx;
+   height:300rpx;
+   font-size:24rpx;
+   border:2rpx solid #eee;
+   color:#a6a6a6;
+ }
+ .setTask{
+   font-size:24rpx;
+   color:#999;
+   width:150rpx;
+   text-align:right;
+ }
+.timersItem{
+  font-size:28rpx;
+  color:#a6a6a6;
+  width:750rpx;
+  line-height:60rpx;
+  /* text-align:center;
+  border-radius:50rpx;
+  border:2rpx solid #eee;*/ 
+  margin:10rpx 20rpx;
+}
+.timersList{
+  padding-left:70rpx;
+  box-sizing:border-box;
+}
+.submit{
+  width:750rpx;
+  height:100rpx;
+  line-height:100rpx;
+  text-align:center;
+  color:#fff;
+  font-size:32rpx;
+  background:#4abdc2;
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+}
+.sureCancels{
+  width:120rpx;
+  height:60rpx;
+  font-size:30rpx;
+  text-align:right;
+  padding:0;
+  box-sizing:border-box;
+  line-height: 60rpx;
+}
+.sureCancels::after{
+  border:none;
+}

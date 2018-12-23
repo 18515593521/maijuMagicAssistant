@@ -1,0 +1,3 @@
+<view>
+  <image src='/pages/images/liability.png' class='images' mode='aspectFit'></image>
+</view>

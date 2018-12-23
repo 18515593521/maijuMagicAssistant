@@ -1,0 +1,154 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.7.0",
+	"appid": "wx5a971c67166aa88b",
+	"projectname": "12-10%20%E5%8A%A9%E6%89%8B",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 17,
+			"list": [
+				{
+					"id": -1,
+					"name": "活动订单",
+					"pathName": "pages/work/customer_manager/make_order/make_order/make_order",
+					"query": "activityId=30&customerId=1167&orderType=2",
+					"scene": "1011"
+				},
+				{
+					"id": 1,
+					"name": "选择产品型号",
+					"pathName": "pages/work/customer_manager/product_type/product_type",
+					"query": "shop_id=245",
+					"scene": "1011"
+				},
+				{
+					"id": 2,
+					"name": "客户详情",
+					"pathName": "pages/work/customer_manager/customer_detail/customer_detail",
+					"query": "detail=4350",
+					"scene": "1011"
+				},
+				{
+					"id": 3,
+					"name": "活动详情",
+					"pathName": "pages/work/customer_manager/activity_detail/activity_detail",
+					"query": "customerId=4370&&sellerId=299&&activityId=83",
+					"scene": "1011"
+				},
+				{
+					"id": 4,
+					"name": "增加沟通记录",
+					"pathName": "pages/work/customer_manager/make_order/add_talk/add_talk",
+					"query": "customer_id=2062&userManager_id=209",
+					"scene": "1011"
+				},
+				{
+					"id": 5,
+					"name": "积分管理",
+					"pathName": "pages/work/integral_manager/my_integral_detail/my_integral_detail",
+					"query": "sellerId=44",
+					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "知识库",
+					"pathName": "pages/work/knowledge/new_list/new_list",
+					"query": "",
+					"scene": "1011"
+				},
+				{
+					"id": 7,
+					"name": "订单列表",
+					"pathName": "pages/work/order_manager/order_manager",
+					"query": "userId=408&shopid=245"
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/myself/myself/myself",
+					"query": "userId=408&shopid=245"
+				},
+				{
+					"id": 9,
+					"name": "活动流程",
+					"pathName": "pages/activity_process/activity_process",
+					"query": "activityId=83&customerId=4370&sellerId=292&shopId=245&node3=299",
+					"scene": "1011"
+				},
+				{
+					"id": 10,
+					"name": "分享",
+					"pathName": "pages/work/product_center/share_product_img/share_product_img",
+					"query": "urlImage=https://www.kaolaj.com/file/upload/mofangyun/QR/2018-03-02/1519963338734.png",
+					"scene": "1011"
+				},
+				{
+					"id": 11,
+					"name": "我的日报",
+					"pathName": "pages/work/myDaily/myDaily_me_list/myDaily_me_list",
+					"query": "",
+					"scene": "1011"
+				},
+				{
+					"id": 12,
+					"name": "分享走",
+					"pathName": "pages/share/share",
+					"query": "P1=G&P3=521&appId=wx563e863bfd512553"
+				},
+				{
+					"id": -1,
+					"name": "客户档案",
+					"pathName": "pages/work/customer_manager/user_file/user_file",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "线索跟进",
+					"pathName": "pages/work/customer_manager/user_task/user_task",
+					"query": ""
+				},
+				{
+					"id": 15,
+					"name": "custommerId",
+					"pathName": "pages/member/member",
+					"query": "customerId=4868"
+				},
+				{
+					"id": -1,
+					"name": "个人中心11",
+					"pathName": "pages/myself/myself/myself",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "tixian",
+					"pathName": "pages/person_center/reflect_value/reflect_value"
+				}
+			]
+		}
+	}
+}

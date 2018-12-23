@@ -1,0 +1,17 @@
+<view class='new_list_box  flexColumnH'>
+  <block wx:for='{{new_list_data}}' wx:key='id'>
+    <view class='new_list flexRow paddingBox' bindtap='skinpTo' data-id='{{item.id}}'>
+      <view class='images'>
+        <image src='{{item.image}}'></image>
+      </view>
+      <view class='flexColumnH new_list_right'>
+        <view class='new_title'>{{item.title}}</view>
+        <view class='flexRow timer_box' >
+          <view class='timer '>{{item.create_time}}</view>
+          <!-- <image src='/pages/images/work/eye.png' class='eye'></image>
+          <view class='look'>23</view> -->
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

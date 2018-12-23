@@ -1,0 +1,19 @@
+<!--pages/work/product_center/product_list/product_list.wxml-->
+<view>
+  <view class='product_box_top'>
+    <image src='/pages/images/class.png' class='class_button' data-url='/pages/work/product_center/class_product/class_product?details={{shopId}}' bindtap='skipUpTo' data-type='2'></image>
+    <view class='search'>
+      <image src='/pages/images/search.png' bindtap='search' data-type='1'></image>
+      <input  class='search_input'  data-type='2' placeholder='请输入产品型号搜索' placeholder-style='text-align:center'  bindconfirm='search'  bindblur='blurGetData' ></input>
+    </view>
+  </view>
+  <view class='list_all_show' style='margin-top:100rpx;' >
+  <block   wx:for='{{product_list_data}}' wx:for-item='item' wx:key ='imgurl'>
+      <view class='list_item_box' bindtap='skipUpTo'data-type='1'  data-url='/pages/work/product_center/product_detail/product_detail?details={{item.id}}'  >
+        <image src='{{item.imgurl}}'  class='list_img'></image>
+        <view class='list_name hiddenLien' style='background:#fff'>{{item.product_title}}</view>
+        <view class='product_price'>¥{{item.min_price}}~{{item.max_price}}</view>
+      </view>
+  </block>
+  </view>
+</view>

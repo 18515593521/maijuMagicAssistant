@@ -1,0 +1,85 @@
+<!--个人信息-->
+<view class='flexColumnH infoBasice'>
+  <view>客户姓名：{{activityData.customer_name}}</view>
+  <view>电话：{{activityData.phone}}</view>
+  <view>定金：{{activityData.deposit_price}}元</view>
+</view>
+<!--活动卡-->
+<view class='flexColumnH infoBasice'>
+  <view class='activiityName'>活动名称：{{activityData.name}} </view>
+  <view class='flexRow' style='align-items:center'>
+    <view>
+      <image src='{{activityData.blockurl}}' class='activityImg'></image>
+    </view>
+    <view class='sureBuy' bindtap='sureBuy' wx:if='{{activityData.card==0}}'>确认购买</view>
+    <view class='sureBuy' style='background:#999'  wx:if='{{activityData.card==1}}'>确认购买</view>
+  </view>
+</view>
+
+<view class='flexRow paddingBox botderBottom' >
+  <view class='flexRow '>
+    <view style='font-size:28rpx;line-height:60rpx'>签到礼:</view>
+    <view class='select_list'>{{propertyData[0].name}}</view>
+    <view class='sign' bindtap='sign' data-name='{{propertyData[0].name}}' wx:if='{{activityData.sign_state==0}}'>签到</view>
+     <view class='sign' bindtap='sign' style='background:#999' wx:if='{{activityData.sign_state==1}}'>签到</view>
+  </view>
+</view>
+
+<view class=''>
+  <view class='activityTitle'>活动券:</view>
+<!--优惠券-->
+<view class='couponList flexColumnH'>
+  <block wx:for='{{activityData.Itmes}}' wx:key='' wx:for-item='item'> 
+    <view class='flexColumnH'>
+      <view class='couponItem'>
+          <image src='/pages/images/work/activity_detail/red.png' class='bgCoupon' wx:if='{{item.status==0}}'></image>
+          <image src='/pages/images/work/activity_detail/gray.png' class='bgCoupon'  wx:if='{{item.status==3||item.status==1}}'></image>
+          <image src='/pages/images/work/activity_detail/cancel.png' class='destroy'  wx:if='{{item.status==1}}'></image>
+          <view class='activityDetail flexRow'>
+            <view class='headImg'>
+              <image src='{{logoImage}}'></image>
+            </view>
+            <view class='flexColumnH activityGift'>
+              <view class='standard flexRow' wx:if='{{item.item_id==4}}'>
+                <view> 每达到</view>
+                <view class='names'>{{item.use_money}}</view>
+                <view>元,可砸次金蛋</view>
+              </view>
+              <view class='standard flexRow' wx:if='{{item.item_id==5}}'>
+                <view> 每达到</view>
+                <view class='names'>{{item.use_money}}</view>
+                <view>元,可抽奖一次</view>
+              </view>
+              <view class='flexRow standard2'>
+                <view class='exchangeCode'>兑换码:{{item.code}}</view>
+                <view class='states' wx:if='{{item.status==0}}'>有效</view>
+                <view class='states' wx:if='{{item.status==1}}'>无效</view>
+              </view>
+            </view>
+          </view>
+      </view> 
+      <view class='flexRow paddingBox'>  <!--0 是未使用 1 是已销毁  3是已使用-->
+        <view class='clickMake canMake' wx:if='{{item.status==0}}' data-items='{{item.item_id}}' data-id='{{item.id}}' data-status='3'  bindtap='clickMake2' data-indexs='{{index}}'>点击使用</view>
+        <view class='clickMake canMake' wx:if='{{item.status==3}}' data-items='{{item.item_id}}'  data-id='{{item.id}}'  data-status='1' bindtap='clickMake2' data-indexs='{{index}}'>点击核销</view>
+        <view class='clickMake noMake' wx:if='{{item.status==1}}'  data-id='{{item.id}}'    data-indexs='{{index}}'>已核销</view>
+        <view class='gift'>对应的礼品：</view>
+        <view  wx:if='{{item.status==1}}'  class='from_text'>
+          <view >{{item.gift}}</view>
+        </view>
+        <view class='select_list' wx:else>
+          <picker range='{{egggiftData}}' data-type='egg' data-indexs='{{index}}'  range-key='name' wx:if='{{item.item_id==4}}' bindchange="bindPickerChange" value="{{egggiftData[egggiftNum].name}}" class='from_text'>
+            <view>{{getEgggif[index]?getEgggif[index].name:egggiftData[0].name}}</view>
+          </picker>
+          <picker range='{{gifData}}' data-type='gift' data-indexs='{{index}}' range-key='name' wx:if='{{item.item_id==5}}' bindchange="bindPickerChange" value="{{gifData[gifNum].name}}" class='from_text'>
+            <view>{{gifNum?gifData[gifNum].name:gifData[0].name}}</view>
+          </picker>
+          <image src='/pages/images/pulldown.png' class='pullDown'></image>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>
+</view>
+
+<!--生成订单-->
+<view class='makeOrder' bindtap='makeOrder'>生成订单</view>

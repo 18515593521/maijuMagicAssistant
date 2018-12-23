@@ -1,0 +1,71 @@
+<view class='paddingBox'>
+  <view>
+    <ul class="flexColumnH ulBox topul" style='margin-top:40rpx'>
+      <li class='topli'>
+        <text class='topText'>客户姓名:<text>{{vipInfo.customer_name}}</text></text>
+      </li>
+      <li class='topli'>
+        <text class='topText'>电话:{{vipInfo.phone}}</text>
+      </li>
+      <li class='topli'>
+        <text class='topText'>会员卡号:{{vipInfo.vip_code}}</text>
+      </li>
+    </ul>
+  </view>
+      <view>
+        <ul class="flexColumnH ulBox" style='margin-top:40rpx'>
+          <li class='bottomli'>
+            <text class='topText'>消费:</text>
+            <input placeholder='{{titleText}}' placeholder-style='font-size:12px;' bindblur='onbindblur'/>
+            <block wx:if="{{vipInfo.use_type==1&&vipInfo.type==3}}">
+              次
+            </block> 
+            <block wx:else>
+              元
+            </block> 
+          </li>
+
+        <block wx:if="{{vipInfo.type==2}}">
+
+          <li class='bottomli'>
+            <text class='topText'>折扣后:</text>
+            <input placeholder='自动计算本次优惠后金额' disabled='disabled' value="{{payMoney1}}" placeholder-style='font-size:12px' readonly="true" />元
+          </li>
+        </block>       
+          <li class='bottomli'>
+            <text class='topText'>备注:</text>
+            <input placeholder='请填写本次消费项目' placeholder-style='font-size:12px' bindblur='remarkChange'/>
+          </li>
+        </ul>
+      </view>
+
+      <view>
+      <block wx:if="{{(vipInfo.use_type==2&&vipInfo.type==2)||(vipInfo.use_type==2&&vipInfo.type==3)}}">
+        <view >
+          <radio-group class="radio-group radioL" bindchange="radioChange">
+            <label class="radio" wx:for="{{radioList}}" wx:key="value">
+              <view class="tui-menu-list"><radio color="#007aff" value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}</view>
+            </label>
+          </radio-group>
+        </view>
+        </block>
+        <view class='requie' bindtap="submit">确认</view>
+      </view>     
+</view>
+<view class='vipBox paddingBox vipImg'>
+      <image src='http://www.kaolaj.com/file/upload/icon/普通会员.png' class='vipbg'></image>
+        <view class='vipShow'>
+          <view class='vipName'>{{vipInfo.card_name}}</view>
+          <view class='vipNumber'>{{vipInfo.vip_code}}</view>
+        </view>
+    <view class='vipName'>
+      <text class='viptext'>会员卡名称:<text>{{vipInfo.card_name}}</text></text>
+      <block wx:if='{{ (vipInfo.type ==2&& vipInfo.use_type==2) || (vipInfo.type ==3) }}'>
+        <text class='viptext'>卡内余额:<text>{{vipInfo.money}}</text></text>
+      </block>
+    </view>
+</view>
+
+<modal hidden="{{hidden}}" title="提示" confirm-text="确认"  bindcancel="cancel" bindconfirm="confirm" no-cancel="true">
+    卡内余额不足,请返回修改或充值后再扣款。
+</modal>

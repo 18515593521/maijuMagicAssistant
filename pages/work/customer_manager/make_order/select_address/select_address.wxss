@@ -1,0 +1,44 @@
+/* pages/work/customer_manager/make_order/select_address/select_address.wxss */
+.list_box{
+  border-top:2rpx solid #eee;
+  border-bottom:10rpx solid #eee;
+}
+.address_list_box{
+  width:750rpx;
+  height:auto;
+  border-bottom:2rpx solid #eee;
+}
+.list_info{
+  width:660rpx;
+  height:auto;
+}
+.correctBox{
+  width:50rpx;
+  height:auto;
+  display:flex;
+}
+.correct{
+  width:35rpx;
+  height:35rpx;
+  align-items:center;
+  margin:auto;
+}
+.list_info view{
+  color:#333;
+  font-size:26rpx;
+}
+.list_info view:first-child{
+  margin-bottom:5rpx;
+}
+.submit{
+  width:750rpx;
+  height:80rpx;
+  line-height:80rpx;
+  text-align:center;
+  color:#fff;
+  background:#44c0c1;
+  position:fixed;
+  margin:auto;
+  bottom:0;
+  font-size:28rpx;
+}

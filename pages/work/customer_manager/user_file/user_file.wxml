@@ -1,0 +1,140 @@
+<!--pages/work/customer_manager/user_file/user_file.wxml-->
+<!--二维码-->
+<view class="imagePannel" hidden="{{codeImageHidden}}">
+  <view class="boxOfSeLect positions">
+  <view class="selectsBox positions">
+    <view class='topSelects'>
+       <view class='selectItem selectItem2' bindtap='selectBox' data-value="0">
+        <view class='checkImg' >
+            <image src='/pages/images/check.jpg' wx:if="{{checkData[0]}}"></image>
+            <image src='/pages/images/nocheck.jpg' wx:if="{{!checkData[0]}}"></image>
+        </view >
+        <view class='selectText'>消费者</view>
+        </view>
+        <view class='selectItem'  bindtap='selectBox' data-value="1">
+         <view class='checkImg'>
+             <image src='/pages/images/check.jpg' wx:if="{{checkData[1]}}"></image>
+            <image src='/pages/images/nocheck.jpg'   wx:if="{{!checkData[1]}}"></image>
+        </view >
+        <view class='selectText'>异业导购</view>
+       </view>
+    </view>
+  <view class='opactionsb'>
+    <view bindtap='selectcel'>取消</view>
+    <view bindtap='selectsure'>确定</view>
+  </view>  
+  </view>
+</view>
+</view>
+
+<!-- 导航栏 -->
+<view class='list paddingBox flexRow justAround'>
+  <view class='item_li {{activeList[0]}}' data-item='0' bindtap='click_request_data'>全部</view>
+  <view class='item_li {{activeList[1]}}' data-item='1' bindtap='click_request_data'>无标签客户</view>
+  <view class='item_li {{activeList[2]}} flexRow' data-item='2' bindtap='selectTip' data-nums='' data-types='1'>
+    <view class='names'>标签客户</view>
+    <image src='/pages/images/work/customer_info/down.png' class='down'></image>
+  </view>
+</view>
+<!-- 未点击标签客户（无弹框弹出）时 -->
+<view class='all_orders flexColumn'>
+  <view class='search_box paddingBox flexRow'>
+    <view class='search'>
+      <image src='/pages/images/search.png' bindtap='search' data-type='1'></image>
+      <input class='search_input' data-type='2' placeholder='请输入姓名或联系方式搜索' placeholder-style='margin-left:20rpx' bindconfirm='search' bindblur='blurGetData'></input>
+    </view>
+    <view class='select_list'>
+      <picker range='{{propertyData}}' bindchange="bindPickerChange" value="{{property}}" class='from_text'>
+        <view>{{propertyData[property]}}</view>
+      </picker>
+      <image src='/pages/images/pulldown.png' class='pullDown'></image>
+    </view>
+  </view>
+</view>
+
+<!--筛选条件-->
+<view class="selects" hidden='{{selectHide}}' catchtouchmove='true'>
+  <view class='selectBox flexRow'>
+    <view class='opactionList flexColumnH'>
+      <block wx:for='{{selectList}}' wx:key='*this'><!-- style='border-bottom:2rpx solid #fff' -->
+        <view class='flexRow {{active[index]}} paddingltBox' data-types='{{item.value}}' bindtap='selectCondion' data-indexs='{{index}}'>
+          <view class='imgIcon'>
+            <image src='{{item.imgUrl}}'></image> 
+          </view>
+          <view class='selectText'>{{item.name}}</view>
+        </view>
+      </block>
+    </view>
+    <view class='opactionList2' bindtap='hideSelect'>
+      <scroll-view scroll-y='true' style='height:560rpx'>
+        <block wx:for='{{selectData}}' wx:key=''>
+          <view class='showItem {{active2[index]}}'  data-nums='{{index}}' data-types='0' data-value = '{{item.value}}' data-indexs='{{index}}' catchtap='selectTip' >
+            <view class='showText'>{{item.name}}</view>
+            <view class='showNum'>{{item.value}}</view>
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+  </view>
+  <view class='btnBox flwxRow'>
+    <view class='resetBtn' catchtap='initRestSelect'>重置</view>
+    <view class='completeBtn' catchtap='submitBtn'>完成</view>
+  </view>
+  <view class='maskBox' bindtap='hideSelect'></view>
+</view>
+
+
+<!--列表-->
+ <block wx:for='{{titleList}}' wx:item='order' wx:for-index='current' wx:key='ids'> 
+  <view hidden='{{itenList[current]}}' class='positionTop'>
+    <!--暂无数据-->
+    <view class='available' wx:if='{{customerInfo.length==0}}'>----暂无数据----</view>
+    <view class='user_info_list flexColumn' hidden='{{adminShow}}'>
+      <!--有数据-->
+      <block wx:for='{{customerInfo}}' wx:for-item='item' wx:key='id'>
+        <view class='user_info_item flexRow'>
+          <view class='info_item_box '>
+            <view>客户姓名</view>
+            <view>{{item.name}}</view>
+          </view>
+          <view class='info_item_box '>
+            <view>联系电话</view>
+            <view>{{item.phone}}</view>
+          </view>
+          <view class='info_item_box '>
+            <view>推广数量</view>
+            <view>{{item.generalized_num?item.generalized_num:''}}</view>
+          </view>
+          <view class='info_item_box '>
+            <view>专属导购</view>
+            <view>{{item.seller_name?item.seller_name:''}}</view>
+          </view>
+        </view>
+      </block>
+    </view>
+    <!--以上是后台，以下是导购-->
+    <view class='user_info_list flexColumn' hidden='{{customerShow}}'>
+      <block wx:for='{{customerInfo}}' wx:for-item='item' wx:key='customerId'>
+        <view class='user_info_item flexRow'>
+          <view class='info_item_box '>
+            <view>客户姓名</view>
+            <view>{{item.customerName}}</view>
+          </view>
+          <view class='info_item_box '>
+            <view>联系电话</view>
+            <view>{{item.custonerPhone}}</view>
+          </view>
+          <view class='info_item_box '>
+            <view>订单总额</view>
+            <view>{{item.orderPrice?item.orderPrice:0}}</view>
+          </view>
+          <view class='info_item_box '>
+            <view class='lookDeatail' data-type='1'  data-item ="{{item}}"data-url='/pages/work/customer_manager/customer_detail/customer_detail?detail={{item.customerId}}' bindtap='modealTap'>查看详情</view>
+            <view class='lookDeatail' data-type='1' data-item ="{{item}}" data-url='/pages/work/customer_manager/customer_detail/customer_detail?detail={{item.customerId}}&skinTypes=1' bindtap='modealTap'>标签管理</view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+ </block> 
+<!--列表-->

@@ -1,0 +1,20 @@
+.detail_box{
+  width:750rpx;
+  font-size:28rpx;
+}
+.botton_line{
+  font-size:28rpx;
+  text-align:center;
+  width:750rpx;
+}
+.titles{
+  font-size:40rpx;
+  text-align:center;
+  color:#333;
+}
+.timer{
+  font-size:24rpx;
+  color:#999;
+   margin-top:20rpx;
+  margin-left:20rpx;
+}

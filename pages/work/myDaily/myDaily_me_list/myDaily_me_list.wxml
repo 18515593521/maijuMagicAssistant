@@ -1,0 +1,16 @@
+<!--pages/work/myDaily/myDaily_me_list/myDaily_me_list.wxml-->
+<!--标题-->
+<view class='flexRow'>
+  <view class='titleBox flexRow'>
+    <view class='tearm'>团队</view>
+    <view class='my'>我</view>
+  </view>
+  <view class='filtrate'>
+    <view>筛选</view>
+    <image src='/pages/images/left.png' class='left'></image>
+  </view>
+</view>
+<view class='select_timer'>
+  
+</view>
+

@@ -1,0 +1,15 @@
+
+<view class='box'>
+    <canvas canvas-id="myCanvas" class="canvas">
+        <cover-view class='waitImgBox' hidden='{{gift}}'>
+          <cover-image src='/pages/images/loading.gif' class='waitText'></cover-image>
+        </cover-view>
+        <cover-view class='tipsBox' hidden='{{tips}}'>
+          <cover-view  class='tipText'>生成失败！请点击重试！</cover-view>
+          <cover-view  class='sures' bindtap='crowImg'>确定</cover-view>
+        </cover-view>
+    </canvas>
+    <view class='downLoad'  bindtap='downLoad' wx:if='{{gift}}'>下载到相册</view>
+</view>
+
+

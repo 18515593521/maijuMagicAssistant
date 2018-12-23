@@ -1,0 +1,16 @@
+<!--pages/work/product_center/class_product/class_product.wxml-->
+<view>
+    <view class='to_all_product' bindtap='skipUpTo' data-url='/pages/work/product_center/product_list/product_list?details={{shopId}}' data-type='1' >
+        <view class='all_product'>全部商品</view>
+        <image src='/pages/images/right.png' class='to_right'></image>
+    </view>
+    <view class='series_class_box' wx:for='{{series_class_data}}'  wx:for-index="classer"  wx:for-item="item" wx:key="name" >
+        <view class='class_deries_name'>{{item.name}}</view>
+        <view class='series_class'>
+          <block  wx:for='{{item.brandSeries}}'  wx:for-item="indexs" wx:key="name"  wx:for-index="series" >
+             <view class='series_text {{indexs.choose}}' bindtap='select_class_series'data-classer='{{classer}}' data-series='{{series}}'  data-id='{{indexs.id}}' >{{indexs.name}}</view>
+          </block>
+        </view>
+    </view>
+    <view class='submit_data' bindtap='skipUpTo' data-type='2' >确定</view>
+</view>   

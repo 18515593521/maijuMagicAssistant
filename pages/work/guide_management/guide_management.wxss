@@ -1,0 +1,117 @@
+ /*模态框*/
+ @import "/pages/template/template.wxss"; 
+
+list{
+  width:750rpx;
+  overflow:hidden;
+  border-top:2rpx solid #eee;
+  border-bottom:2rpx solid #eee;
+}
+.paddingBox{
+  padding:20rpx;
+  box-sizing:border-box;
+}
+.flexRow{
+  display:flex;
+  flex-flow:row nowrap;
+  
+}
+.flexColumn{
+  display:flex;
+  flex-flow:column wrap;
+}
+.item_li{
+  font-size:28rpx;
+  width:235rpx;
+  text-align:center;
+  height:80rpx;
+  line-height:80rpx;
+}
+.list .active{
+  border-bottom:2rpx solid #4abdc2;
+  color:#4abdc2;
+}
+.search_box{
+  height:100rpx;
+  overflow:hidden;
+}
+.search{
+  width:100%;
+  height:100%;
+  position:relative;
+}
+.search_input{
+  font-size:28rpx;
+  border-radius:10rpx;
+  border:2rpx solid #eee;
+  width:100%;
+  height:100%;
+  color:gray;
+  padding-right:40rpx;
+  box-sizing:border-box;
+  z-index:0;
+}
+.search image{
+  width:30rpx;
+  height:30rpx;
+  position:absolute;
+  margin:auto;
+  right:8rpx;
+  top:15rpx;
+  z-index:10000;
+}
+.store,.edit,.print{
+  width:30rpx;
+  height:30rpx;
+}
+.orderItem{
+  font-size:26rpx;
+  overflow:hidden;
+  line-height:30rpx;
+}
+.leftInfo{
+  float:left;
+  /* margin-left:20rpx; */
+}
+.edit,.print{
+  margin-right:30rpx;
+  float:right;
+}
+.orderInfo{
+  width:750rpx;
+  height:120rpx;
+  background:#eee;
+}
+.names{
+  width:750rpx;
+  height:160rpx;
+  background:#eee;
+  margin-bottom:2rpx;
+}
+.listInfo{
+  width:100%;
+}
+.listInfo .itemInfo{
+  width:25%;
+  font-size:28rpx;
+  text-align:center;
+}
+.guideInfo view{
+  font-size:28rpx;
+  text-align:center;
+
+}
+.guideInfo{
+  padding:10rpx 20rpx;
+ box-sizing:border-box;
+ animation-iteration-count:10rpx;
+}
+.guideInfo view:first-child,.guideInfo view:last-child{
+  margin-right:20rpx;
+}
+.noData{
+  color:#666;
+  font-size:26rpx;
+  text-align:center;
+  margin-top:20rpx;
+}

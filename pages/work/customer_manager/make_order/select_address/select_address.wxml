@@ -1,0 +1,15 @@
+<!--pages/work/customer_manager/make_order/select_address/select_address.wxml-->
+<view class='flexColumnH list_box'>
+ <block wx:for='{{linkManData}}' wx:key='' >
+    <view class='address_list_box flexRow paddingBox'>
+      <view class='list_info' data-id='{{item.id}}' bindtap='chooseAddress'>
+        <view>{{item.receiver_name}},{{item.phone_num}}</view>
+        <view>{{item.province}}-{{item.district}}-{{item.address_details}}</view>
+      </view> 
+      <view class='correctBox'>
+          <image src='/pages/images/correct.png' class='correct' wx:if='{{item.choose}}' ></image>
+      </view>
+    </view>
+  </block>
+</view>
+<view class='submit' bindtap='submitData'>确定</view>

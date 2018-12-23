@@ -1,0 +1,333 @@
+/* pages/work/customer_manager/make_order/make_order/make_order.wxss */
+input{
+  height:60rpx;
+}
+.activityBox{
+  padding:20rpx 20rpx 0 20rpx;
+  box-sizing:border-box;
+  border-top:2rpx solid #eee;
+  border-bottom:10rpx solid #eee;
+  width:750rpx;
+}
+.activityName view:nth-child(1),.activityName view:nth-child(1){
+  width:130rpx;
+}
+.flexWidth{
+  width:35rpx;
+  height:100%;
+}
+.infoItem{
+  padding:0 0 10rpx 0;
+  box-sizing:border-box;
+  width:750rpx;
+  overflow:hidden;
+}
+.activityBox view,.item{
+  font-size:26rpx;
+  color:#666;
+  line-height:40rpx;
+  margin-bottom:5rpx;
+}
+.item{
+  width:50%;
+}
+.addressIcon{
+  width:30rpx;
+}
+.addressBoxs{
+  border-bottom:10rpx solid #eee;
+  width:750rpx;
+  overflow: hidden;
+}
+.addressInfo{
+  width:680rpx;
+}
+.addressInfo .item{
+  color:#333;
+}
+.address{
+  font-size:26rpx;
+ color:#333;
+}
+.addressImg{
+  width:35rpx;
+  height:35rpx;
+  margin:auto 5rpx auto 0rpx;
+  align-items:center;
+}
+.editImg{
+  width:25rpx;
+  height:25rpx;
+  margin-top:5rpx;
+  margin-right:10rpx;
+}
+.selectAdress{
+  color:#44c0c1;
+  font-size:24rpx;
+}
+.receiveName,.receivephone{
+  line-height:60rpx;
+}
+.receivephones,.receiveNames{
+  width:210rpx;
+  /* line-height:60rpx; */
+  height:60rpx;
+}
+.inputTips{
+  color:#666;
+  font-size:26rpx;
+  line-height:60rpx;
+}
+.inputClass{
+  font-size:26rpx;
+  line-height:60rpx;
+}
+.productTitle{
+  padding:0 20rpx;
+  box-sizing:border-box;
+  width:750rpx;
+}
+.productList{
+    padding:15rpx 20rpx 0 10rpx;
+  box-sizing:border-box;
+}
+.productListBox{
+  padding:10rpx 0 20rpx 0;
+  box-sizing:border-box;
+  width:750rpx;
+}
+.productTitle view{
+  width:180rpx;
+  height:80rpx;
+  text-align:center;
+  font-size:26rpx;
+  border-bottom:2rpx solid #eee;
+  line-height:80rpx;
+  padding-left:30rpx;
+  box-sizing:border-box;
+}
+.price,.num,.totalPrices,.product_title,.orderPrice,.paymentWay{
+  width:150rpx;
+  height:60rpx;
+  background:#eee;
+  font-size:24rpx;
+  border-radius:10rpx;
+  margin:0 10rpx;
+  text-align:center;
+  line-height:60rpx;
+  margin-top: 10rpx;
+}
+.addImg{
+  width:35rpx;
+  height:35rpx;
+  align-items:center;
+  margin:auto 0;
+}
+.ruleItemBox{
+  width:50%;
+}
+.ruleItemBox view,.ruleItemBox input,.payentWays{
+  font-size:24rpx;
+  text-align:center;
+  line-height:80rpx;
+}
+.ruleItem .ruleItemBox .orderPrice{
+    width:180rpx;
+}
+.paymentWays{
+  width:130rpx;
+  font-size:26rpx;
+}
+.pullImg{
+  width:25rpx;
+  height:25rpx;
+  position:absolute;
+  margin:auto;
+  top:0;
+  bottom:0;
+  right:30rpx;
+}
+.paymentWaya{
+  width:100%;
+  height:100%;
+  text-align:left;
+  margin-left:20rpx;
+}
+.paymentWaya view{
+  line-height:60rpx;
+}
+.ruleItems{
+  padding:10rpx 20rpx;
+  box-sizing:border-box;
+}
+.raffleNum{
+  width:600rpx;
+  font-size:24rpx;
+  line-height:80rpx;
+}
+.selectSale{
+  width:750rpx;
+  height:60rpx;
+  line-height:60rpx;
+  padding:0 20rpx;
+  box-sizing:border-box;
+  border:2rpx solid #eee;
+}
+.selectName{
+  width:150rpx;
+  height:100%;
+  font-size:26rpx;
+  color:#666;
+}
+.selectContent{
+  width:550rpx;
+  height:100%;
+  font-size:26rpx;
+  text-align:right;
+  padding-right:20rpx;
+  box-sizing:border-box;
+  color:#666;
+}
+.rights{
+  width:30rpx;
+  height:30rpx;
+  margin-top:15rpx;
+  align-items:center;
+  margin:auto;
+}
+.pop_up_box{
+  width:750rpx;
+  height:750rpx;
+  background:#fff;
+  position:absolute;
+  margin:auto;
+  bottom:0;
+  left:0;
+  right:0;
+  z-index:10000;
+}
+.selectTile{
+  width:100%;
+  line-height:60rpx;
+  border-bottom:2rpx solid #eee;
+  text-align:center;
+  font-size:30rpx;
+}
+.selectItem{
+  width:100%;
+  height:80rpx;
+  line-height:80rpx;
+  border-bottom:2rpx solid #eee;
+  padding:0 20rpx;
+  box-sizing:border-box;
+}
+.belongTo {
+  width:750rpx;
+}
+.selectImg{
+  width:30rpx;
+  height:30rpx;
+  align-items:center;
+  margin:auto;
+}
+.fullSubtract{
+  width:650rpx;
+  height:100%;
+  font-size:26rpx;
+}
+.selectOpaction{
+  width:100%;
+  height:100rpx;
+  border-top:2rpx solid #44c0c1;
+  box-sizing:border-box;
+  text-align:center;
+  background:#44c0c1;
+  line-height:100rpx;
+  font-size:28rpx;
+  color:#fff;
+}
+
+.sale,.totalSalePrice{
+  font-size:26rpx;
+  line-height:60rpx;
+  float:right;
+  width:300rpx;
+  text-align:right;
+}
+.totalSalePrice{
+  text-align:right;
+  margin-right:20rpx;
+}
+.remark{
+  overflow:hidden;
+  border-top:10rpx solid #eee;
+  width:750rpx;
+  height:60rpx;
+  border-bottom:2rpx solid #eee;
+}
+.wenhao{
+  width:30rpx;
+  height:30rpx;
+  float:left;
+  margin:16rpx;
+}
+.remark view{
+width:200rpx;
+font-size:26rpx;
+float:left;
+line-height:60rpx;
+}
+.remarkText{
+  font-size:24rpx;
+  color:#333;
+  width:750rpx;
+  overflow:hidden;
+  height:150rpx;
+  float:left;
+}
+.explain{
+  width:750rpx;
+  height:auto;
+  overflow:hidden;
+  padding:10rpx 20rpx;
+  font-size:24rpx;
+  border-bottom:2rpx solid #eee;
+  z-index:-10000;
+  box-sizing:border-box;
+}
+.submit{
+  width:750rpx;
+  height:100rpx;
+  background:#44c0c1;
+  text-align:center;
+  font-size:30rpx;
+  color:#fff;
+  line-height:100rpx;
+}
+
+/*省市区选择器*/
+.pickerViewContainer{
+  position: fixed;
+  bottom: 0;
+  background-color: #F5F5F5;
+  opacity: 1;
+  z-index:10000;
+  border-top: 1rpx solid #B2B2B2;
+}
+.pickerViewOperate{
+  padding: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 30rpx;
+  color: #4ABDC2;
+}
+.pickerView{
+  width: 750rpx;
+  height: 400rpx;
+}
+.pickerColumn{
+  line-height: 50px;
+  text-align: center;
+  font-size: 28rpx;
+}

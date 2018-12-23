@@ -1,0 +1,290 @@
+ /*模态框*/
+ @import "/pages/template/template.wxss"; 
+.my_box{
+  width:750rpx;
+  border-top:20rpx solid #eee;
+  border-bottom:20rpx solid #eee;
+  align-items:center;
+  font-size:28rpx;
+  display:flex;
+  color:#3C3C3C;
+  flex-flow:row nowrap;
+  justify-content:space-between;
+}
+.redsShow2{
+  font-size:36rpx;
+  line-height:64rpx;
+}
+.weixinNname{
+  width:150rpx;
+  height:60rpx;
+  text-align:center;
+  line-height:60rpx;
+  background:#4abcc2;
+  color:#fff;
+  margin-top:40rpx;
+}
+.images image{
+  width:130rpx;
+  height:130rpx;
+  display:block;
+  border-radius:50%;
+  margin-right:20rpx;
+}
+.item{
+  width:750rpx;
+  height:100rpx;
+  display:flex;
+  align-items:center;
+  color:#3C3C3C;
+  font-size:28rpx;
+  border-bottom:2rpx solid #eee;
+}
+ .img,.img2{
+  width:35rpx;
+  height:35rpx;
+  margin-right:20rpx;
+  display:block;
+}
+.item .img2{
+  margin-left:20rpx;
+  margin-right:0;
+}
+.names,.phones{
+  width:300rpx;
+}
+.phones{
+  text-align:right;
+}
+.detailed{
+  width:150rpx;
+  height:133rpx;
+  text-align:center;
+  line-height:133rpx;
+  float:right;
+  font-size:26rpx;
+  text-decoration:underline;
+}
+
+.headBoxs {
+  /* justify-items: center;
+  align-items: center; */
+  width: 750rpx;
+  /* height: 300rpx; */
+  background: #fff;
+}
+.infoSysle{
+  /* margin-bottom:30rpx;
+  padding-bottom:20rpx; */
+  box-sizing:border-box;
+  background:#fff;
+}
+.goGet{
+  width:100%;
+  height:80rpx;
+  line-height:80rpx;
+  text-align:center;
+  font-size:26rpx;
+  color:#999;
+  background:#fff;
+}
+.estimate{
+  width:100%;
+  color:#666;
+  font-size:26rpx;
+  margin-top:20rpx;
+}
+.infoSysle .meTitle2{
+  font-size:40rpx;
+  color:red;
+}
+.detailToGet{
+  font-size:24rpx;
+  color:#666;
+  float:right;
+  width:200rpx;
+  text-align:right;
+  line-height:80rpx;
+  margin-right:20rpx;
+}
+.infoSysle .meTitle3{
+  font-size:36rpx;
+  /* line-height:86rpx; */
+}
+.yang2{
+    font-size:36rpx;
+  line-height:86rpx;
+  margin-right:10rpx;
+}
+.getToMoneys{
+  font-size:24rpx;
+  text-align:center;
+  margin:30rpx auto 20rpx;
+  width:200rpx;
+  height:50rpx;
+  line-height:50rpx;
+  color:#fff;
+  background:#4abcc2;
+}
+.headMoves{
+  margin-left:20rpx;
+  height:133rpx;
+  justify-content:center;
+}
+
+.showMoney{
+  font-size:30rpx;
+  justify-content:center;
+  text-align:center;
+  line-height:60rpx;
+  width:100%;
+  background:#fff;
+}
+.redsShow{
+  font-size:46rpx;
+  color:red;
+}
+.weixinNames{
+  font-size:26rpx;
+}
+.opantions{
+  width:577rpx;
+  justify-content:space-between;
+}
+.detailed{
+  width:150rpx;
+  height:133rpx;
+  text-align:center;
+  line-height:133rpx;
+  float:right;
+  font-size:26rpx;
+  text-decoration:underline;
+}
+.infoSysle .goOutDetail{
+  color:#333;
+  text-decoration:underline;
+  margin:0 auto;
+}
+
+.headTitle {
+  width: 150rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  color: #fff;
+  background: #4ca9aa;
+  font-size: 24rpx;
+  margin-top: 20rpx;
+}
+
+.moneyValue {
+  font-size: 40rpx;
+  color: #e90000;
+  font-weight: bold;
+  margin-top: 20rpx;
+}
+.getToMoneys1{
+  font-size:24rpx;
+  text-align:center;
+  margin:30rpx auto 20rpx;
+  width:350rpx;
+  height:50rpx;
+  line-height:50rpx;
+  color:#fff;
+  background:#4abcc2;
+}
+
+.headImg {
+  width: 133rpx;
+  height: 133rpx;
+  display: block;
+  border-radius:50%;
+}
+
+.opactionBox {
+  width: 750rpx;
+  background: #fff;
+  height: 80rpx;
+}
+
+.opactionBox view {
+  width: 50%;
+  height: 60rpx;
+  font-size: 30rpx;
+  line-height: 60rpx;
+  text-align: center;
+}
+
+.meMoney {
+  overflow: hidden;
+  width: 100%;
+  height: 100rpx;
+  border-bottom: 2rpx solid #eee;
+  background: #fff;
+}
+
+.meImage {
+  width: 38rpx;
+  height: 37rpx;
+  display: block;
+  float: left;
+  margin-top: 32rpx;
+}
+
+.arrows_right {
+  float: right;
+  width: 12rpx;
+  height: 22rpx;
+  margin-top: 42rpx;
+}
+
+.moneyImg {
+  width: 35rpx;
+  height: 28rpx;
+
+}
+.allMoneys2{
+    float: right;
+  margin-right: 20rpx;
+  margin-top:36rpx;
+}
+.moneyImg2{
+  width:25rpx;
+  height:29rpx;
+  margin-right: 30rpx;
+}
+
+.meTitle {
+  line-height: 100rpx;
+  margin-left: 10rpx;
+  float: left;
+  font-size: 26rpx;
+}
+
+.backImage {
+  width: 47rpx;
+  height: 44rpx;
+  float: left;
+  margin-top: 15rpx;
+}
+
+
+.people image {
+  width: 113rpx;
+  height: 113rpx;
+  display: block;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.showMoney{
+  font-size:30rpx;
+  justify-content:center;
+  text-align:center;
+  line-height:60rpx;
+  width:100%;
+  background:#fff;
+}
+.yang{
+  margin-right:20rpx;
+  line-height:64rpx;
+}

@@ -1,0 +1,112 @@
+{
+  "pages":[
+   
+    "pages/login/login",
+
+    "pages/index/index",
+    "pages/work/index/work",
+    "pages/myself/myself/myself",
+
+    "pages/activity/activity_details/activity_details",   
+    "pages/activity/activity_head_show/activity_head_show", 
+
+     "pages/work/product_center/shop_list/shop_list",   
+     "pages/work/product_center/product_list/product_list",
+     "pages/work/product_center/class_product/class_product",
+     "pages/work/product_center/product_detail/product_detail", 
+
+     "pages/work/customer_manager/user_file/user_file",
+      "pages/work/customer_manager/user_commission/user_file",
+     "pages/work/customer_manager/user_task/user_task",
+     "pages/work/customer_manager/thread_follow/set_task",
+     "pages/work/customer_manager/select_customer/select_customer",
+     "pages/work/customer_manager/toSetTask/toSetTask",
+     "pages/work/customer_manager/thread_follow_remind/set_task",
+     "pages/work/customer_manager/customer_detail/customer_detail",
+
+     "pages/work/customer_manager/make_order/make_order/make_order",
+     "pages/work/customer_manager/product_type/product_type",
+     "pages/work/customer_manager/make_order/select_address/select_address",
+     "pages/work/customer_manager/activity_detail/activity_detail",
+      "pages/work/customer_manager/make_order/add_talk/add_talk",
+
+     "pages/work/integral_manager/integral_detail/integral_detail",
+     "pages/work/integral_manager/my_integral_detail/my_integral_detail",
+
+     "pages/work/knowledge/new_list/new_list", 
+     "pages/work/knowledge/new_detail/new_detail",    
+
+     "pages/work/guide_management/guide_management",
+     "pages/work/order_manager/order_manager",
+     "pages/work/vr/vr",
+      "pages/myself/myself_commission/myself",
+     "pages/myself/phone/phone",
+      "pages/myself/complete_phone/complete_phone",
+     "pages/myself/erweima/erweima",
+     "pages/myself/aboutUs/aboutUs",
+     "pages/myself/aboutUsDetail/aboutUsDetail",
+
+     "pages/activity_process/activity_process",
+     "pages/template/template",
+
+     "pages/work/myDaily/myDaily_team_list/myDaily_team_list",  
+     "pages/work/myDaily/myDaily_me_list/myDaily_me_list",
+    
+    "pages/work/product_center/share_product_img/share_product_img",
+    "pages/share/share",
+    "pages/authorize_fail/authorize_fail",
+    "pages/member/member",
+
+    "pages/person_center/detailed/detailed",
+    "pages/person_center/details/details",
+    "pages/person_center/reflect_value/reflect_value",
+    "pages/person_center/extension/extension"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle":"black",
+    "onReachBottomDistance":"600px",
+    "enablePullDownRefresh": false
+  },
+
+  "tabBar":{
+    "color": "#fff",
+    "selectedColor": "#4bbec3",
+    "backgroundColor": "#333",
+    "borderStyle": "white",
+    "position": "bottom",
+    "list":[{
+      "pagePath": "pages/index/index",
+      "iconPath":"pages/images/page_login/activity.png",
+      "selectedIconPath":"pages/images/page_login/selectActivity.png",
+      "text": "活动"
+      
+    },{
+      "pagePath": "pages/work/index/work",
+      "iconPath": "pages/images/page_login/work.png",
+      "selectedIconPath": "pages/images/page_login/selectWork.png",
+
+      "text": "工作台"
+    },{
+      "pagePath": "pages/myself/myself_commission/myself",
+      "iconPath": "pages/images/page_login/my.png",
+      "selectedIconPath": "pages/images/page_login/selectMy.png",
+       "text": "我的" 
+    }]
+  },
+
+"networkTimeout": {
+  "request": 10000,
+  "connectSocket": 10000,
+  "uploadFile": 10000,
+  "downloadFile": 10000
+},
+"debug": false,
+"navigateToMiniProgramAppIdList": [
+  "wx563e863bfd512553",
+  "wx7e89ae5c19f93e80"
+]    
+ 
+}

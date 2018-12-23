@@ -1,0 +1,9 @@
+<!--pages/work/product_center/shop_list/shop_list.wxml-->
+<view class='list_all_show'>
+<block   wx:for='{{shop_list_data}}' wx:for-item='item' wx:key ='imgurl'>
+    <view class='list_item_box' bindtap='skipUpTo' data-url='/pages/work/product_center/product_list/product_list?details={{item.shopId}}' data-type='1'>
+      <image src='{{item.imgurl}}'  class='list_img'></image>
+      <view class='list_name hiddenLien'>{{item.shopName}}</view>
+    </view>
+</block>
+</view>

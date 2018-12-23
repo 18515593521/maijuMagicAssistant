@@ -1,0 +1,31 @@
+<!--pages/template/template.wxml-->
+<!--弹框-->
+
+<!--菊花效果-->
+<template name='tips_box'>
+  <view class='tips_hip'>
+      <view class='mainHip '>
+        <image src='/pages/images/loading.gif' class='wait'></image>
+      </view>
+  </view>
+</template>
+
+<!--等待中-->
+<template name='waitImg'>
+  <view class='waitImgBox'>
+    <!-- <view class='waitText'>生成中...</view> -->
+     <image src='/pages/images/loading.gif' class='waitText'></image>
+  </view>
+</template>
+<!--掃碼-->
+<template name='scanCorder'>
+   <movable-area class='movableView' >
+    <movable-view out-of-bounds='true' direction="all" style='width:100rpx;height:100rpx;overfloat:hidden' bindscale='scaleImg' bindchange='changeDistance' x='0' y='50'>
+    <view  class='scanCorder'  bindtap='scanCode' >
+      <image src='/pages/images/scan.png' class='scanImg'></image>
+    </view>
+    </movable-view>
+  </movable-area>
+</template>
+
+<template is='scanCorder' />

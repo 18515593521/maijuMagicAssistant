@@ -1,0 +1,5 @@
+/* pages/myself/aboutUsDetail/aboutUsDetail.wxss */
+.images{
+  width:750rpx;
+  height:3750rpx;
+}

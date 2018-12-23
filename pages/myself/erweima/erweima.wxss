@@ -1,0 +1,117 @@
+ /*模态框*/
+ @import "/pages/template/template.wxss"; 
+.qrCodeBox image{
+  width:600rpx;
+  height:600rpx;
+  display:block;
+  margin:250rpx 75rpx 0;
+  z-index:10000;
+}
+.qrCodeBox .info{
+  position:absolute;
+  margin:auto;
+  width:250rpx;
+  height:170rpx;
+  top:451rpx;
+  left:0;
+  right:0;
+  background:#fff;
+}
+.canvas{
+  width:750rpx;
+  height:1334rpx;
+  opacity:0;
+}
+.canvasBox{
+  z-index:-1000;
+  opacity:0;
+  top:0;
+  bottom:0;
+  background:#fff;
+}
+.position{
+  position:absolute;
+  margin:auto;
+  left:0;
+  right:0;
+}
+.makeCard{
+  width:180rpx;
+  height:60rpx;
+  background: #4abdc2;
+  color:#fff;
+  font-size:24rpx;
+  text-align:center;
+  bottom:200rpx;
+  line-height:60rpx;
+  z-index:10000;
+}
+/*分享的弹框*/
+.sharecontents{
+  width:600rpx;
+  height:380rpx;
+  border:2rpx solid #4abdc2;
+  border-radius:10rpx;
+  overflow:hidden;
+  margin:auto;
+  background:#fff;
+  position:absolute;
+  top:0;
+  left:0;
+  bottom:0;
+  right:0;
+
+}
+.care,.sure{
+  width:50%;
+  height:80rpx;
+  line-height:80rpx;
+  text-align:center;
+  font-size:26rpx;
+  color:#fff;
+  background:#4abdbf;
+}
+.sure{
+  border:0;
+  border-radius: 0;
+}
+/* 点击分享弹出框 */
+.maskPopup{
+  position:fixed;
+  margin:auto;
+  background:rgba(0, 0, 0, 0.5);
+  width:100%;
+  height:100%;
+  bottom:0;
+  left:0;
+  z-index:1000;
+}
+.textBtn{
+  width:100%;
+  height:80rpx;
+  float:left;
+  border-top:2rpx solid #4abdc2;
+}
+.btnsBox{
+  width: 100%;
+  height: 243rpx;
+  position:fixed;
+  bottom:0;
+
+}
+.btnCard{
+  width:750rpx;
+  height:80rpx;
+  line-height:80rpx;
+  text-align:center;
+  color:#666;
+  background:#fff;
+  font-size:28rpx;
+  border-bottom: 1px solid #fff;
+}
+.inputMBox{
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+  height: 260rpx;
+  width: 580rpx;
+}

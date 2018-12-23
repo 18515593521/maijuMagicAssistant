@@ -1,0 +1,38 @@
+<view class='qrCodeBox'> 
+  <image src='{{qrCode}}'></image>
+  <!-- <image src='/pages/images/logo.png' class='info'></image> -->
+</view>
+<!-- <view class="canvasBox position" >
+  <canvas canvas-id="myCanvas" class="canvas"/>
+</view> -->
+<button open-type='share' class='makeCard position'>邀请好友</button>
+<!-- <view class='makeCard position' bindtap='maskPopup' hidden='{{makeCard}}'>分享</view> -->
+<!--动态框-->
+<import src="../../template/template.wxml"/>
+<view hidden='{{gift}}'>
+  <template is='waitImg'/>
+</view>
+
+
+<!-- 点击分享底部弹出动态弹框 -->
+<view class='maskPopup' hidden='{{threeBtn}}'>
+  <!-- 底部按钮 -->
+  <view class='btnsBox flexColumnH' hidden='{{btnHidden}}'>
+    <view class='btnCard' bindtap='shareFriend'>分享给朋友</view>
+    <view class='btnCard' bindtap='makeCard'>生成海报</view>
+    <view class='btnCard' bindtap='maskHidden'>取消</view>
+  </view>
+  <!-- 用户输入框 -->
+  <view class='flexColumnH sharecontents' hidden='{{isShare}}'>
+    <view  style='height:300rpx'>
+      <textarea type='text' data-values='{{shareName}}' placeholder='最多可输入18个字' placeholder-style='font-size:24rpx;' maxlength='18' bindinput='editShareValues' class='inputMBox'></textarea>
+      <!-- <input type='text' data-values='{{shareName}}' maxlength='18' bindinput='editShareValues' class='inputMBox'/> -->
+    </view>
+    
+    <view class='textBtn flexRow'>
+      <view class='care' style='color:#4abdbf;background:#fff' data-values='1' bindtap='editShare'>取消</view>
+      <button class='sure' data-values='2' open-type='share' bindtap='editShare'>确定</button>
+      <!-- <view class='sure' data-values='2' bindtap='editShare'>确定</view> -->
+    </view>
+  </view>
+</view>

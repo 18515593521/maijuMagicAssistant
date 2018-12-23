@@ -1,0 +1,61 @@
+/* pages/login/login.wxss */
+ /*模态框*/
+ @import "/pages/template/template.wxss"; 
+.logos{
+  width:175rpx;
+  height:120rpx;
+  margin: 100rpx auto ;
+}
+.loginContent{
+  padding:20px;
+  width:100%;
+  height:auto;
+  box-sizing:border-box;
+  overflow:hidden;
+}
+.scan{
+  width:80rpx;
+  height:80rpx; 
+}
+.login_Acess{
+  width:100%;
+  margin-bottom:40rpx;
+  overflow:hidden;
+  position:relative;
+}
+ .access{
+   width:40rpx;
+   height:40rpx;
+   color:#999;
+   position:absolute;
+   margin:auto;
+   top:14rpx;
+   left:18rpx;
+}
+.access_text,.pass_text{
+  border-radius:5%;
+  border:1px solid #eee;
+  width:600rpx;
+   height:36px;
+ /* float:right; */
+  color:#999;
+  font-size:28rpx;
+  margin:auto;
+  padding-left:65rpx;
+}
+.logIn{
+  width:600rpx;
+  height:80rpx;
+  line-height:80rpx;
+  font-size:30rpx;
+  text-align:center;
+  color:#fff;
+  background:#4abdc2;
+  margin:auto;
+  border-radius:10rpx;
+}
+.getUsers{
+  width:300rpx;
+  height:100rpx;
+  
+}

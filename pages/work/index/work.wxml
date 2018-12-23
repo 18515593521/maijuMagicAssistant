@@ -1,0 +1,184 @@
+<!--pages/work/index/work.wxml-->
+<!--任务列表-->
+<view class='task_list' hidden='{{taskList}}'>
+  <view class='task_title' wx:if="{{taskListData.length>0}}">任务列表</view>
+  <block wx:for='{{taskListData}}' wx:key=''>
+    <view class='task_box'>
+      <view class='task_content' style='border-bottom:2rpx solid #f7f7f7'>
+        <view class='sell_deail'>
+            <view class='model color_gray task_nums_all'>合同额</view>
+            <view class='model task_all_num'>{{item.contract_amount?item.contract_amount:0}}</view>
+            <view class='percentage'>
+              <view class='model finsh_num color_gray'>完成百分比</view>
+              <view class='model finsh_num' style='color:#fc989d;'>{{item.contract_amount_percentage?item.contract_amount_percentage:0}}%</view>
+            </view>
+        </view>
+        <view class='sell_deail'>
+            <view class='model color_gray task_nums_all'>定金数</view>
+            <view class='model task_all_num'>{{item.order_amount?item.order_amount:0}}</view>
+            <view class='percentage'>
+              <view class='model color_gray finsh_num'>完成百分比</view>
+              <view class='model finsh_num'  style='color:#fc989d;'>{{item.order_amount_percentage?item.order_amount_percentage:0}}%</view>
+            </view>
+        </view>  
+      </view> 
+        <view  class='sell_deail_icon'>
+          <image src='/pages/images/work/list/sell.png' class='activity_icons'></image>
+          <view class='activity_titles'>销售任务</view>
+        </view>
+    </view> 
+  </block>
+  <block wx:for='{{activityListData}}'  wx:key=''>
+    <view class='task_box'>
+      <view class='task_content task_content_next'>
+        <view style='display:flex;flex-flow:row nowrap;'>
+          <view class='sell_deail'>
+              <view class='model color_gray task_nums_all'>成单数</view>
+              <view class='model task_all_num'>{{item.activity_num?item.activity_num:0}}</view>
+              <view class='percentage'>
+                <view class='model finsh_num color_gray'>完成百分比</view>
+                <view class='model finsh_num' style='color:#fc989d;'>{{item.invite_activity_num?item.invite_activity_num:0}}%</view>
+              </view>
+          </view>
+          <view class='sell_deail'>
+              <view class='model color_gray task_nums_all'>签到率</view>
+              <view class='model task_all_num'>{{item.sign_rate?item.sign_rate:0}}</view>
+              <view class='percentage'> 
+                <view class='model color_gray finsh_num'>完成百分比</view>
+                <view class='model finsh_num'  style='color:#fc989d;'>{{item.invite_sign_rate?item.invite_sign_rate:0}}%</view>
+              </view>
+          </view> 
+          <view class='sell_deail'>
+              <view class='model color_gray task_nums_all'>活动卡</view>
+              <view class='model task_all_num'>{{item.activity_card?item.activity_card:0}}</view>
+              <view class='percentage'>
+                <view class='model color_gray finsh_num'>完成百分比</view>
+                <view class='model finsh_num'  style='color:#fc989d;'>{{item.invite_activity_card_num?item.invite_activity_card_num:0}}%</view>
+              </view>
+          </view> 
+        </view>
+        <view class='tast_activity_title'>活动名称：{{item.activity_name}}</view>
+      </view>
+        <view  class='sell_deail_icon'style="padding:80rpx 15rpx;">
+          <image src='/pages/images/work/list/gift.png' class='activity_icons'></image>
+          <view class='activity_titles'>活动任务</view>
+        </view>
+    </view>  
+  </block>
+</view>
+<!--图标展示-->
+<view class='icon_content'>
+<block wx:for='{{icon_all_data}}' wx:for-item="item"  wx:key="url" wx:if='{{index!==4&&typeModels== "seller"||((index==7&&typeModels!=="group")&&index!==1&&index!==2&&typeModels!== "seller")}}'>
+  <view class='item-icon' bindtap='skipUpTo' data-indexs='{{index}}' data-types='{{item.types}}'  data-type='{{item.indexPage}}' data-url='{{item.go_to_url}}'  >
+    <image src='/pages/images/work/icon_center/{{item.url}}'></image>
+    <view class='title_icons'>{{item.title}}</view>
+  </view>
+</block>
+</view>
+
+<view hidden='{{taskList}}'>
+<!--今日数据-->
+  <view class='data_title'>今日数据</view>
+  <view class='datas_list'>
+    <view  class='datas_list_item' bindtap='skipUpTo' data-type='1' data-url='/pages/work/order_manager/order_manager'>
+      <image src='/pages/images/work/tody_data/order.png' class='data_icon' style='margin-right:20rpx'></image>
+      <view class='data_name'>新增订单</view>
+      <view class='data_num' style='text-align:right'>{{todayDatas.orderNum}}</view>
+      <image src='/pages/images/right.png' class='right_icon' style='margin-left:20rpx'></image>
+    </view>
+    <view  class='datas_list_item'  bindtap='skipUpTo' data-type='1' data-url='/pages/work/customer_manager/user_file/user_file'>
+      <image src='/pages/images/work/tody_data/user.png' class='data_icon' style='margin-right:20rpx'></image>
+      <view class='data_name'>邀请客户</view>
+      <view class='data_num' style='text-align:right'>{{todayDatas.customerNum}}</view>
+      <image src='/pages/images/right.png' class='right_icon' style='margin-left:20rpx'></image>
+    </view>
+    <view  class='datas_list_item'>
+      <image src='/pages/images/work/tody_data/share.png' class='data_icon' style='margin-right:20rpx'></image>
+      <view class='data_name'>分享次数</view>
+      <view class='data_num' style='text-align:right'>{{todayDatas.shareNum}}</view>
+      <view  class='right_icon' style='margin-left:20rpx'></view>
+      <!-- <image src='/pages/images/right.png' class='right_icon' style='margin-left:20rpx'></image> -->
+    </view>
+    <view  class='datas_list_item'>
+      <image src='/pages/images/work/tody_data/coupon.png' class='data_icon' style='margin-right:20rpx'></image>
+      <view class='data_name'>新增买卡数</view>
+      <view class='data_num' style='text-align:right'>{{todayDatas.buyCardNum}}</view>
+      <view  class='right_icon' style='margin-left:20rpx'></view>
+      <!-- <image src='/pages/images/right.png' class='right_icon' style='margin-left:20rpx'></image> -->
+    </view>
+  </view>
+  <!--报备客户电话-->
+  <view style='background:#f9f9f9;padding:40rpx 0;box-sizing:border-box'>
+    <view class='report_phone' bindtap='user_phone_pop'>报备客户电话</view>
+  </view>
+  <!--报备客户的弹框-->
+  <view class='report_user' hidden='{{_popUp}}'>
+    <view class='report_box'>
+      <view style='height:320rpx;'>
+        <view class='user_info_box' style='margin-top:20rpx;'>
+            <view class='user_info_name'>客户姓名</view>
+            <input type='text' value='{{_name}}'  placeholder-style="color:#999;margin-left:20rpx;" data-param= '_name'  bindinput="user_infos"  placeholder="请输入客户姓名" class='user_name'></input>
+        </view>
+        <view class='user_info_box'>
+            <view class='user_info_name'>联系方式</view>
+            <input type='number' value='{{_phone}}'  placeholder-style="color:#999;margin-left:20rpx;"  bindinput="user_infos"   data-param="_phone" placeholder="请输入联系方式" class='user_name' confirm-type='done'></input>
+        </view>
+      </view>
+      <view class='operation_box'>
+        <view class='cancel' style='color:#666' bindtap='cancel_operation'>取消</view>
+        <view class='sure' style='background:#4abdc2;color:#fff;' bindtap='sure_operation'>确定</view>
+      </view>
+    </view>
+  </view>
+</view>
+ <!--昨日概况-->
+ <view hidden='{{adminList}}'>
+ <view class='data_title'>数据概况</view>
+    <view class='yesterday_state'>
+        <view class='general_state'>
+          <view style='font-size:30rpx;width:150rpx;'>昨天概况</view>
+          <image src='/pages/images/work/yestday_data/notice.png' class='notice_img'></image>
+          <view class='upload_time'>数据更新至2018-1-1</view>
+        </view>
+        <view class='yesterday_list'>
+          <view class='user_num'>
+            <view class='userNum'>累计用户数</view>
+            <view class='userNumShow'>456</view>
+            <view class='collect_num'>日：7.41% ↑</view>
+            <view class='collect_num'>周：7.41% ↑</view>
+            <view class='collect_num'>月：7.41% ↑</view>
+          </view>
+          <view class='user_num'>
+            <view class='userNum'>访问人数</view>
+            <view class='userNumShow'>56</view>
+            <view class='collect_num'>日：7.41% ↑</view>
+            <view class='collect_num'>周：7.41% ↑</view>
+            <view class='collect_num'>月：7.41% ↑</view>
+          </view>
+          <view class='user_num'>
+            <view class='userNum'>新用户数</view>
+            <view class='userNumShow'>27</view>
+            <view class='collect_num'>日：7.41% ↑</view>
+            <view class='collect_num'>周：7.41% ↑</view>
+            <view class='collect_num'>月：7.41% ↑</view>
+          </view>                  
+        </view>              
+    </view>
+ </view>
+
+<!--佣金模块-->
+<view class='newcardBox' wx:if='{{lookCommission}}'>
+   <view class="delete">
+    <image src="/pages/images/delete.png" bindtap="hideCodeImage"></image>
+  </view>
+    <view class='commissionImage'  animation="{{animationData}}" bindtap='skipTocenter'>
+      <image class='image' src='{{orderImage.image}}' ></image>
+    </view>
+</view>
+
+ <!--动态框-->
+<import src="../../../pages/template/template.wxml"/>
+<view hidden='{{isCommercial}}'>
+  <template is="scanCorder"  />
+</view>
+  

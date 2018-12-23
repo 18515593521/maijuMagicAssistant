@@ -1,0 +1,62 @@
+<!--pages/work/customer_manager/user_file/user_file.wxml-->
+
+<!-- 导航栏 -->
+<view class='list paddingBox flexRow justAround'>
+  <view class='select_list'>
+      <picker range='{{customer_Type_list}}' bindchange="customerTypeChange" value="{{customer_Type}}" class='from_text'>
+        <view class='hiddenLien2'>{{customer_Type_list[customer_Type]}}</view>
+      </picker>
+      <image src='/pages/images/pulldown.png' class='pullDown'></image>
+    </view>
+    <view class='select_list'>
+      <picker range='{{customer_life_list}}' bindchange="customerLifeChange" value="{{customer_life}}" class='from_text'>
+        <view class='hiddenLien2'>{{customer_life_list[customer_life]}}</view>
+      </picker>
+      <image src='/pages/images/pulldown.png' class='pullDown'></image>
+    </view>
+    <view class='select_list'>
+      <picker range='{{appointment_list}}' bindchange="appointmentChange" value="{{appointment}}" class='from_text'>
+        <view class='hiddenLien2'>{{appointment_list[appointment]}}</view>
+      </picker>
+      <image src='/pages/images/pulldown.png' class='pullDown'></image>
+    </view>
+    <view class='select_list'>
+      <picker range='{{into_Shop_Number_list}}' bindchange="intoShopNumberChange" value="{{into_Shop_Number}}" class='from_text'>
+        <view class='hiddenLien2'>{{into_Shop_Number_list[into_Shop_Number]}}</view>
+      </picker>
+      <image src='/pages/images/pulldown.png' class='pullDown'></image>
+    </view>
+  <!-- 未点击标签客户（无弹框弹出）时 -->
+</view>
+<view class='all_orders flexColumn'>
+  <view class='search_box paddingBox flexRow'>
+    <view class='search'>
+      <image src='/pages/images/search.png' bindtap='search' data-type='1'></image>
+      <input class='search_input' data-type='2' placeholder='请输入姓名或联系方式搜索' placeholder-style='margin-left:20rpx' bindconfirm='search' bindblur='blurGetData'></input>
+    </view>
+    <view class='select_list'>
+      <picker range='{{activity_list}}'range-key="name" bindchange="activityChange" value="{{activity_list[activity_id].value}}" class='from_text'>
+        <view class='hiddenLien2'>{{activity_list[activity_id].name}}</view>
+      </picker>
+      <image src='/pages/images/pulldown.png' class='pullDown'></image>
+    </view>
+  </view>
+</view>
+<view class='user_info_list flexColumn' >
+      <block wx:for='{{customerInfo}}' wx:for-item='item' wx:key='id'>
+        <view class='user_info_item flexRow'>
+          <view class='info_item_box '>
+            <view>客户姓名</view>
+            <view>{{item.customer_name}}</view>
+          </view>
+          <view class='info_item_box '>
+            <view>联系电话</view>
+            <view>{{item.phone?item.phone:'暂无'}}</view>
+          </view>
+          <view class='info_item_box info_item_box_3' >
+            <view class='lookDeatail' data-type='1' data-url='/pages/work/customer_manager/customer_detail/customer_detail?detail={{item.id}}' bindtap='skipUpTo'>客户详情</view>
+            <view class='lookDeatail' data-type='1' data-url='/pages/work/customer_manager/thread_follow/set_task?detail={{item.id}}&seller_id={{seller_id}}' bindtap='skipUpTo'>设置任务</view>
+          </view>
+        </view>
+      </block>
+    </view>

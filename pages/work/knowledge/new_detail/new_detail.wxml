@@ -1,0 +1,8 @@
+<import src="/pages/plugs/wxParse/wxParse.wxml"/>
+<view class='titles'>{{detailDatail.title}}</view>
+<view class='timer'>{{creatTimer}}</view>
+<view class='detail_box paddingBox'>
+  <template is="wxParse" data="{{wxParseData:details.nodes}}"/>
+</view>
+<view class='botton_line'>-----我是底线-----</view>
+

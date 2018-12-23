@@ -1,0 +1,14 @@
+<!--pages/work/integral_manager/integral_detail/integral_detail.wxml-->
+<view class='flexColumnH'>
+  <block wx:for='{{scoreDataList}}' wx:key='id'>
+    <view class='score_detail_box flexRow paddingBox'>
+        <view class='score_content flexColumnH'>
+            <view class='names'>【{{item.type_name}}】 {{item.title}}</view>
+            <view class='timer'>{{item.create_time}}</view>
+        </view>
+        <view class='score_num'>{{item.point}}</view>
+    </view>
+  </block>
+  <view wx:if='{{scoreDataList.length==0}}' class='available'>--暂无详情--</view>
+</view>
+

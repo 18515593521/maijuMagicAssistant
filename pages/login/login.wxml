@@ -1,0 +1,28 @@
+<!--pages/login/login.wxml-->
+<view style='text-align:center'>
+<image src='/pages/images/logo.png' class='logos'></image>
+</view>
+<view class='loginContent'>
+   <view class="login_Acess">
+        <image src='../images/login_icon/access.png' class='access'></image>
+        <input type='text' placeholder="请输入账号" data-param= '_name'  bindinput="accent_input" placeholder-style='font-size:16px' class='access_text'></input>
+   </view>
+   <view class="login_Acess">
+        <image src='../images/login_icon/pass.png' class='access'></image>
+        <input type='text' placeholder="请输入密码" password = 'true' data-param= '_password' bindinput="accent_input" placeholder-style='font-size:16px' class='pass_text'></input>
+   </view>
+   <view class="logIn" bindtap = "loginToUp" loading="{{loading}}">登录</view>
+   <!-- <button type='primary' style='backgorund:#'  ></button> -->
+</view>
+<!--动态框-->
+<import src="../template/template.wxml"/>
+<view hidden='{{gifts}}'>
+  <template is='waitImg'/>
+</view>
+
+
+
+
+
+
+

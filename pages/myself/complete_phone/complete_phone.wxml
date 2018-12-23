@@ -1,0 +1,15 @@
+<view class='paddingBox' style='width：750rpx'>
+  <view class='phone'>新手机号</view>
+  <view class='paddingBox' style='width:100%'>
+      <input type='number' maxlength='11' placeholder='请输入需要绑定的新手机号' bindinput='getNewPhone' class='newPhone'></input>
+      <view class='flexRow' style='margin-top:40rpx;width:100%'>
+        <input type='number' maxlength='6' class='pullCode'bindinput='importCode'  placeholder='输入验证码'></input>
+        <view class='clickCode' bindtap='getCode'>{{phoneValue}}</view>
+      <!-- <view class='clickCode' hidden='{{getCode}}'></view> -->
+    </view>
+  </view>
+</view>
+
+
+<view class='sure' bindtap='sure'>确定</view>
+

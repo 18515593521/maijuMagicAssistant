@@ -1,0 +1,29 @@
+<view>
+ <block wx:for='{{taskInfo}}'  wx:key='id'>
+  <view class="flexColumnH paddingBox" style='border-bottom:2rpx solid #eee'>
+    <view class='flexRow justBetween'>
+      <view class='timeShow'>{{item.create_time}}</view>
+      <view class='select_list'>
+        <picker range='{{tasklist}}' bindchange="bindPickerChange" data-indexs='{{index}}' value="{{item.status -1}}" class='from_text'>
+          <view>{{tasklist[item.status-1]}}</view>
+        </picker>
+        <image src='/pages/images/pulldown.png' class='pullDown'></image>
+      </view>
+    </view>
+    <view class='timer' style=' margin-top:10rpx;'>任务时间:{{item.start_time}}</view>
+    <view class='flexRow' style='margin-top:10rpx'>
+        <view class='timer ' style='width:130rpx;'>任务内容:</view>
+        <view class='timer ' style='width:590rpx'>{{item.content}}</view>
+    </view>
+    <view  class='flexRow'>
+    <view class='timer ' style='width:80rpx;'></view>
+    <view class='flexRow2 paddingBox2'>
+    <block wx:for='{{item.remind_time}}' wx:for-item='remind' wx:key='id'>
+        <view class='timeList'>{{remind.remind_time}}</view>
+    </block>
+    </view>
+    </view>
+  </view>
+  </block>
+  <view class='setTeask' data-type='1' data-url='/pages/work/customer_manager/toSetTask/toSetTask?detail={{customer_id}}&type=1' bindtap='skipUpTo'>创建任务</view>
+</view>

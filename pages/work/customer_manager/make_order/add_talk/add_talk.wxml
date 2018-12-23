@@ -1,0 +1,14 @@
+
+
+<!--沟通内容-->
+<view class='basic_info_box flexColumnH'>
+  <view class='basic_title flexRow'>
+    <view class='images'>
+      <image src='/pages/images/work/wrench.png'></image>
+    </view>
+    <view>沟通内容</view>
+  </view>
+  <textarea hidden='{{textHidenShow}}' value='{{info.customerUserManagerBasic.communicate_content}}' data-basic='basic' placeholder='请输入沟通内容' placeholder-style='color:#a7a7a7' data-keys='communicate_content' class='content paddingBox marginlrbox' bindinput='editContent' style='margin-bottom:120rpx'></textarea>
+</view>
+<!--提交按钮-->
+<view class='submit' bindtap='submitData'>提交</view>

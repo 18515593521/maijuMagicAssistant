@@ -1,0 +1,27 @@
+<view class='searchList paddingBox'>
+  <view class='search'>
+    <image src='/pages/images/search.png' bindtap='search' data-type='1'></image>
+    <input class='search_input' data-type='2' placeholder='请输入姓名或联系方式搜索' placeholder-style='margin-left:20rpx' bindconfirm='search' bindblur='blurGetData'></input>
+  </view>
+</view>
+
+<view class='flexColumnH '>
+  <block wx:for='{{customerInfo}}' wx:for-item='customer' wx:key='id'>
+    <view class=' customerItems '>
+      <radio-group class="radio-group " bindchange="radioChange">
+        <label class="radio flexRow justBetween">
+          <view class='flexRow'>
+            <view class='name'>{{customer.name}}</view>
+            <view class='name' style='margin-left:40rpx'>{{customer.phone?customer.phone:'暂无'}}</view>
+          </view>
+
+          <radio value="{{customer.id}}" class='radioSelect' checked='{{customer.checked}}' />
+        </label>
+      </radio-group>
+
+    </view>
+  </block>
+
+</view>
+
+<view class='submit' data-type='1' data-url='/pages/work/customer_manager/toSetTask/toSetTask?detail={{customer_id}}&type=2&customer_name={{customer_name}}' bindtap='skipUpTo'>提交</view>

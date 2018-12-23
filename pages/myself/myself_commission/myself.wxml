@@ -1,0 +1,212 @@
+<block wx:if='{{!is_horizontal_alliances}}'>
+<view class='my_box paddingBox'>
+  <view class='images'>
+    <image src='/pages/images/152859716.jpg'></image>
+  </view>
+  <view >{{mySeleftData.name}}</view>
+</view>
+
+<view class='flexColumnH'>
+  <view class='item paddingBox'>
+    <view>
+      <image src='/pages/images/work/my.png' class='img'></image>
+    </view>
+    <view class='names'>账号</view>
+    <view class='phones'>{{mySeleftData.user_name}}</view>
+    <view  class='img2'></view>
+    <!-- <image src='/pages/images/right.png' class='img2'></image> -->
+  </view>
+
+  <view class='item paddingBox'>
+    <view>
+      <image src='/pages/images/work/factory.png' class='img'></image>
+    </view>
+    <view class='names'>商户名称</view>
+    <view class='phones'>{{mySeleftData.filiale}}</view>
+    <view  class='img2'></view>
+    <!-- <image src='/pages/images/right.png' class='img2'></image> -->
+  </view>
+
+  <view class='item paddingBox' data-url='/pages/myself/phone/phone?phone={{mySeleftData.phone}}'  bindtap='skinUp'>
+    <view>
+      <image src='/pages/images/work/phone.png' class='img'></image>
+    </view>
+    <view class='names'>已绑定手机</view>
+    <view class='phones'>{{phone}}</view>
+    <image src='/pages/images/right.png' class='img2'></image>
+  </view>
+
+  <view class='item paddingBox' data-url='/pages/myself/erweima/erweima' bindtap='skinUp'>
+    <view>
+      <image src='/pages/images/work/erweima.png' class='img'></image>
+    </view>
+    <view class='names'>我的专属码</view>
+    <view class='phones'></view>
+    <image src='/pages/images/right.png' class='img2'></image>
+  </view>   
+
+  <view class='item paddingBox' data-url='/pages/myself/aboutUs/aboutUs'  bindtap='skinUp'>
+    <view>
+      <image src='/pages/images/work/about.png' class='img'></image>
+    </view>
+    <view class='names'>关于</view>
+    <view class='phones'></view>
+    <image src='/pages/images/right.png' class='img2'></image>
+  </view>  
+
+  <view class='item paddingBox' bindtap='exit'>
+    <view>
+      <image src='/pages/images/work/out.png' class='img'></image>
+    </view>
+    <view class='names'>退出登录</view>
+    <view class='phones'></view>
+    <view  class='img2'></view>
+    <!-- <image src='/pages/images/right.png' class='img2'></image> -->
+  </view>    
+</view>
+<!--动态框-->
+<import src="../../../pages/template/template.wxml"/>
+<view hidden='{{isCommercial}}'>
+  <template is="scanCorder" />
+</view>
+</block>
+<block wx:else>
+
+<view class='my_box paddingBox'>
+  <view class='flexRow'>
+    <view class='images'>
+      <image src='/pages/images/152859716.jpg'></image>
+    </view>
+    <view class='weixinNname'>{{mySeleftData.name}}</view>
+  </view>
+
+  <view class="detailed" data-urls="/pages/person_center/detailed/detailed?types=2" data-types="1" bindtap='pageSkipTo'>交易明细</view>
+</view>
+<view class='infoSysle'>
+
+    <view class='goGet'>—— 可提现余额 ——</view>
+    <view class='showMoney flexRow'>
+      <view style='' class='yang'>¥</view>
+      <view class='redsShow'> {{canCarryMoney}}</view>
+    </view>
+  <block wx:if="{{canCarryMoney < 1 }}">
+    <view class='getToMoneys1' >少于 1 元 不可提现</view>
+    </block>
+    <block wx:elif="{{status==1 && payState==1 }}">
+    <view class='getToMoneys' data-urls="/pages/person_center/reflect_value/reflect_value?money={{canCarryMoney}}" data-types="1" bindtap='pageSkipTo'>立即提现</view>
+    </block>
+    <block wx:elif="{{status==2 && payState==1 }}">
+        <view class='getToMoneys' >{{num}}天后可提现</view>
+    </block>
+    <block wx:elif="{{status==2 && payState==2 }}">
+      <view class='getToMoneys1' >{{num}}天后 提交线下提现请求</view>
+    </block>
+  <block wx:elif="{{status==1 && payState==2 }}">
+      <view class='getToMoneys1'data-urls="/pages/person_center/reflect_value/reflect_value?money={{canCarryMoney}}" data-types="1" bindtap='pageSkipTo' >今日可提现 请提交线下提现请求</view>
+    </block>
+  <view class='getToMoneys goOutDetail' data-urls="/pages/person_center/details/details" data-types="1" bindtap='pageSkipTo' style='background:none'>提现明细</view>
+
+  <view class='estimate paddingBoxL'>待核算预估收入</view>
+  <!--待核算预估收入-->
+  <view class='meMoney paddingBoxL' data-urls="/pages/person_center/detailed/detailed?types=1" data-types="1" bindtap='pageSkipTo'>
+    <view>
+
+        <view class='meTitle meTitle2 flexRow'>
+          <view  class='yang2'> ¥</view>
+          <view> {{waitAuditMoney}}</view>
+      </view>
+    
+      <image src="/pages/images/arrows_right.png" class='arrows_right'></image>
+      <view class='detailToGet'>待核算订单明细</view>
+
+    </view>
+  </view>
+</view>
+
+<!--邀请好友得佣金-->
+<view class='meMoney paddingBoxL' data-urls="/pages/myself/erweima/erweima" data-types="1" bindtap='pageSkipTo'>
+  <view>
+    <image src='/pages/images/me.png' class='meImage'></image>
+    <view class='meTitle'>邀请好友</view>
+    <image src="/pages/images/arrows_right.png" class='arrows_right'></image>
+    <block wx:if="{{imageShow }}">
+      <image src='/pages/images/money.png' class='moneyImg allMoneys2'></image>
+    </block>
+  </view>
+</view>
+<!--我的推广-->
+<view class='meMoney paddingBoxL' data-urls="/pages/person_center/extension/extension?types=2" data-types="1" bindtap='pageSkipTo'>
+  <view>
+    <image src='/pages/images/shares.png' class='meImage'></image>
+    <view class='meTitle'>我的推广</view>
+    <image src="/pages/images/arrows_right.png" class='arrows_right'></image>
+    <block wx:if="{{imageShow }}">
+      <image src='/pages/images/redPages.png' class='moneyImg2 allMoneys2'></image>
+      </block>
+  </view>
+</view>
+<!--账户-->
+<view class='flexColumnH'>
+  <view class='item paddingBox'>
+    <view>
+      <image src='/pages/images/work/my.png' class='img'></image>
+    </view>
+    <view class='names'>账号</view>
+    <view class='phones'>{{mySeleftData.user_name}}</view>
+    <view class='img2'></view>
+    <!-- <image src='/pages/images/right.png' class='img2'></image> -->
+  </view>
+
+  <view class='item paddingBox'>
+    <view>
+      <image src='/pages/images/work/factory.png' class='img'></image>
+    </view>
+    <view class='names'>商户名称</view>
+    <view class='phones'>{{mySeleftData.filiale}}</view>
+    <view class='img2'></view>
+    <!-- <image src='/pages/images/right.png' class='img2'></image> -->
+  </view>
+
+  <view class='item paddingBox' data-url='/pages/myself/phone/phone?phone={{mySeleftData.phone}}' bindtap='skinUp'>
+    <view>
+      <image src='/pages/images/work/phone.png' class='img'></image>
+    </view>
+    <view class='names'>已绑定手机</view>
+    <view class='phones'>{{phone}}</view>
+    <image src='/pages/images/right.png' class='img2'></image>
+  </view>
+
+  <!-- <view class='item paddingBox' data-url='/pages/myself/erweima/erweima' bindtap='skinUp'>
+    <view>
+      <image src='/pages/images/work/erweima.png' class='img'></image>
+    </view>
+    <view class='names'>我的专属码</view>
+    <view class='phones'></view>
+    <image src='/pages/images/right.png' class='img2'></image>
+  </view> -->
+
+  <view class='item paddingBox' data-url='/pages/myself/aboutUs/aboutUs' bindtap='skinUp'>
+    <view>
+      <image src='/pages/images/work/about.png' class='img'></image>
+    </view>
+    <view class='names'>关于</view>
+    <view class='phones'></view>
+    <image src='/pages/images/right.png' class='img2'></image>
+  </view>
+
+  <view class='item paddingBox' bindtap='exit'>
+    <view>
+      <image src='/pages/images/work/out.png' class='img'></image>
+    </view>
+    <view class='names'>退出登录</view>
+    <view class='phones'></view>
+    <view class='img2'></view>
+    <!-- <image src='/pages/images/right.png' class='img2'></image> -->
+  </view>
+</view>
+<!--动态框-->
+<import src="../../../pages/template/template.wxml" />
+<view hidden='{{isCommercial}}'>
+  <template is="scanCorder" />
+</view>
+</block>

@@ -1,0 +1,41 @@
+/* pages/work/myDaily/myDaily_me_list/myDaily_me_list.wxss */
+.titleBox{
+  width:300rpx;
+  height:60rpx;
+  border:2rpx solid #4bbcc2;
+  border-radius:20rpx;
+  margin:auto;
+  line-height:60rpx;
+  font-size:28rpx;
+  overflow:hidden;
+}
+.tearm{
+  width:50%;  
+  text-align:center;
+  color:#fff;
+  background:#4bbcc2;
+}
+.my{
+  width:50%;
+  text-align:center;
+  color:#4bbcc2;
+}
+.filtrate{
+  font-size:28rpx;
+  width:90rpx;
+  height:60rpx;
+  line-height:60rpx;
+  position:absolute;
+  margin:auto;
+  right:20rpx;
+}
+.filtrate view{
+  float:left;
+  color:#ababab;
+}
+.left{
+  width:35rpx;
+  height:35rpx;
+  float:left;
+  margin:15rpx 0 auto;
+}

@@ -1,0 +1,15 @@
+<view class='integral_box paddingBox flexColumnH'>
+  <view class='score_title'>积分奖励后期公布</view>
+  <view class='score_code'>{{score}}</view>
+</view>
+<view class='score_box_list flexColumnH'>
+  <block wx:for='{{scoreData}}' wx:key='title'>
+    <view class='score_item flexRow' data-types ='{{item.type}}' bindtap='skinpTo'>
+      <view class='title'>{{item.title}}</view>
+      <view class='images '>
+        <image src='/pages/images/right.png' ></image>
+      </view>
+    </view>
+  </block>
+</view>
+

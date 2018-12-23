@@ -1,0 +1,89 @@
+<!--pages/work/customer_manager/activity_detail/activity_detail.wxml-->
+<!--活动详情-->
+<view class='activityName '>活动名称：{{activityData.name}}</view>
+<view class='images'>
+  <image src='{{activityData.blockurl}}'></image>
+</view>
+<view class='flexColumnH activityInfo'>
+  <view class='flexRow activityItem'>
+    <view>活动状态：{{activityState[activityData.sign_state]}}</view>
+    <view>签到礼:{{activityData.sign_gift?activityData.sign_gift:'暂无'}}</view>
+  </view>
+  <view class='flexRow activityItem'>
+    <view>预付定金:{{activityData.deposit_price?activityData.deposit_price:0}}元</view>
+    <view>实际付定金:{{activityData.real_pay_price?activityData.real_pay_price:0}}元</view>
+  </view>  
+</view>
+<view class='title'>活动券</view>
+<!--优惠券-->
+<view class='couponList flexColumnH'>
+  <block wx:for='{{activityData.item}}' wx:key='id'>
+    <view class='flexColumnH'>
+      <view class='couponItem'>
+          <image src='/pages/images/work/activity_detail/red.png' class='bgCoupon' wx:if='{{item.status==0}}'></image>
+          <image src='/pages/images/work/activity_detail/gray.png' class='bgCoupon'  wx:if='{{item.status==1||item.status==2||item.status==3}}'></image>
+          <image src='/pages/images/work/activity_detail/cancel.png' class='bgCoupons'  wx:if='{{item.status==3}}'></image>
+          <view class='activityDetail flexRow'>
+            <view class='headImg'>
+              <image src='{{logoImage}}'></image>
+            </view>
+            <view class='flexColumnH activityGift'>
+              <view class='standard flexRow' wx:if='{{item.item_id==4}}'>
+                <view> 每达到</view>
+                <view class='names'>{{item.use_money}}</view>
+                <view>元,可砸次金蛋</view>
+              </view>
+              <view class='standard flexRow' wx:if='{{item.item_id==5}}'>
+                <view> 每达到</view>
+                <view class='names'>{{item.use_money}}</view>
+                <view>元,可抽奖一次</view>
+              </view>
+              <view class='flexRow standard2'>
+                <view class='exchangeCode'>兑换码:{{item.code}}</view>
+                <view class='states' wx:if='{{item.status==0}}'>有效</view>
+                <view class='states' wx:if='{{item.status==1}}'>无效</view>
+              </view>
+            </view>
+          </view>
+      </view>
+      <view class='gift'>礼品:{{item.gift?item.gift:'暂无'}}</view>
+    </view>
+  </block>
+</view>
+<!--活动订单-->
+<view class='flexColumnH' style='border-top:20rpx solid #eee;'>
+  <view class='activityRecord paddingBox'>订单记录</view>
+  <view class='noDatay' wx:if='{{orderData.length==0}}'>--暂无数据--</view>
+  <block wx:for='{{orderData}}' wx:for-item='order'  wx:key='customerId'>
+    <view class='paddingBox orderItem'>
+      <image src='/pages/images/work/customer_info/store.png' class='store leftInfo'></image>
+      <view style='margin-left:20rpx' class='leftInfo'>订单编号:</view>
+      <view style='float:left'>{{order.order_code}}</view>
+      <view style='color:red;float:right'>{{orderState[order.order_state]}}</view>
+      <view class='editOrders' wx:if='{{order.orderState!==4}}' bindtap='editOrderDetail'  data-id='{{customerId}}'  data-activityId="{{activityId}}"  data-orderType = '1'  data-orderId = '{{order.id}}'   data-editType='edit'>编辑</view>
+
+    </view>
+    <view class='orderInfo flexRow'> 
+        <view class='order_info flexColumnH'>
+            <view>客户姓名</view>
+            <view>{{order.consignee_name?order.consignee_name:'暂无'}}</view>
+        </view>
+        <view class='order_info flexColumnH'>
+            <view>联系方式</view>
+            <view>{{order.consignee_phone?order.consignee_phone:'暂无'}}</view>
+        </view>
+        <view class='order_info flexColumnH'>
+            <view>产品型号</view>
+            <view>{{order.product_model?order.product_model:'暂无'}}</view>
+        </view>
+        <view class='order_info flexColumnH'>
+            <view>订单金额</view>
+            <view>￥{{order.order_price?order.order_price:'暂无'}}</view>
+        </view>
+    </view>
+    <view class='orderOpationBox paddingBox'>
+      <view class='orderTime'>订单时间：{{order.create_time}}</view>
+      <view class='activityDetails' data-id='{{customerId}}'  data-activityId="{{activityId}}"  data-orderType = '1'  data-orderId = '{{order.id}}'  bindtap='editOrderDetail' data-editType='look'>查看详情</view>
+    </view>
+  </block>
+</view>
