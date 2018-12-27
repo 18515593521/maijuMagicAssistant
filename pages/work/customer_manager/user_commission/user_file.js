@@ -128,7 +128,14 @@ Page({
         
         if (resData.code == 0) {
           var resDataList = resData.result.data;
-
+          if (resDataList && resDataList.length>0){
+            for (var i = 0; i < resDataList.length; i++) {
+              if (!resDataList[i].tags) {
+                resDataList[i].tags = []
+              }
+            }
+          }
+          
           var isTureFalsePage = true;
           if (resDataList.length < thisPage.data.pageSize) {
             var isTureFalsePage = false;
@@ -136,6 +143,7 @@ Page({
           if (num > 1) {
             resDataList = thisPage.data.customerInfo.concat(resDataList);
           }
+         
           thisPage.setData({
             customerInfo: resDataList,
             isTureFalsePage: isTureFalsePage ,

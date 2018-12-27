@@ -245,3 +245,96 @@
 .active2{
   background:#f2f2f2;
 }
+.tags{
+  background-color: #4abdc2;
+  height: 50rpx;
+  font-size: 30rpx;
+  line-height: 50rpx;
+  padding: 0 10rpx;
+  text-align:center;
+}
+.tagItem{
+  color: white;
+  display: flex;
+  align-items: flex-start;
+  margin: 0 15rpx;
+}
+
+
+
+/*二维码*/
+.imagePannel{
+  position:fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.8);
+  z-index: 210;
+}
+
+.boxOfSeLect{
+  position:fixed;
+
+  background:rgba(255,255,255,0.7);
+}
+.positions{
+    margin:auto;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+}
+.selectsBox{
+  width:600rpx;
+  height:250rpx;
+  position:absolute;
+  border:2rpx solid #4ab;
+  display:flex;
+  flex-flow:column nowrap;
+  background-color: white;
+
+}
+.topSelects{
+  width:100%;
+  height:150rpx;
+  border-bottom:2rpx solid #4ab;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.selectItem{
+  display:flex;
+  flex-flow:row nowrap;
+  width:200rpx;
+  height:80rpx;
+  justify-content:center;
+  align-items:center;
+}
+
+.selectText{
+  font-size:30rpx;
+}
+.opactionsb{
+  display:flex;
+  flex-flow:row nowrap;
+}
+.opactionsb view{
+  width:50%;
+  height:100rpx;
+  line-height:100rpx;
+  text-align:center;
+  font-size:30rpx;
+}
+.opactionsb view:last-child{
+  background:#4ab;
+  color:#fff;
+  border-left:2rpx solid #4ab;
+}
+
+.inputS{
+  width:600rpx;
+  height:36px;
+}
+
+

@@ -1,5 +1,20 @@
 <!--pages/work/customer_manager/user_file/user_file.wxml-->
-
+<!--二维码-->
+<view class="imagePannel" hidden="{{codeImageHidden}}">
+  <view class="boxOfSeLect positions">
+  <view class="selectsBox positions">
+    <view class='topSelects'>
+  
+        <input type='text' class='inputS'placeholder="输入标签文字，最多五个字" bindinput="accent_input" maxlength='5'></input>
+       
+    </view>
+  <view class='opactionsb'>
+    <view bindtap='selectcel'>取消</view>
+    <view bindtap='selectsure'>确定</view>
+  </view>  
+  </view>
+</view>
+</view>
 
 <!-- 未点击标签客户（无弹框弹出）时 -->
 <view class='all_orders flexColumn'>
@@ -42,30 +57,35 @@
     <!--以上是后台，以下是导购-->
     <view class='user_info_list flexColumn' hidden='{{customerShow}}'>
       <block wx:for='{{customerInfo}}' wx:for-item='item' wx:key='customerId'>
-      <view>
-          <view>
+        <view class='user_info_item'>
+        <view class='tagItem'>
             <block wx:for='{{item.tags}}' wx:for-item='item1' wx:key='id'>
-            <view>{{item1.name}}</view>
+              <view wx:if='{{item1.type == 1}}' class='tags'>
+                {{item1.name == 1}}
+              </view>
+              <view wx:elif='{{item1.type == 2}}' class='tags' bindtap='addTags'>
+                添加
+              </view>
             </block>
+        </view>
+        <view class=' flexRow'>
+          <view class='info_item_box '>
+            <view>客户姓名</view>
+            <view>{{item.name}}</view>
           </view>
-          <view class='user_info_item flexRow'>
-            <view class='info_item_box '>
-              <view>客户姓名</view>
-              <view>{{item.name}}</view>
-            </view>
-            <view class='info_item_box '>
-              <view>联系电话</view>
-              <view>{{item.phone}}</view>
-            </view>
-            <view class='info_item_box '>
-              <view>订单总额</view>
-              <view>{{item.order_price?item.order_price:0}}</view>
-            </view>
-            <view class='info_item_box '>
-              <view>推广数量</view>
-              <view>{{item.inviterNum?item.inviterNum:0}}</view>
-            </view>
+          <view class='info_item_box '>
+            <view>联系电话</view>
+            <view>{{item.phone}}</view>
           </view>
+          <view class='info_item_box '>
+            <view>订单总额</view>
+            <view>{{item.order_price?item.order_price:0}}</view>
+          </view>
+           <view class='info_item_box '>
+            <view>推广数量</view>
+            <view>{{item.inviterNum?item.inviterNum:0}}</view>
+          </view>
+        </view>
         </view>
       </block>
     </view>
