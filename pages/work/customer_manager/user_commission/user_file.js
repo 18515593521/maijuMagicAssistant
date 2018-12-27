@@ -17,7 +17,7 @@ Page({
     customerInfo:null, //顾客档案信息
     customerShow:true, //导购
     adminShow:true,  //后台
-
+    codeImageHidden: true,
     product_title:null,  //搜索信息
     property: 0,   //来源 (全部渠道'0,'公司分配1','邀请注册2')
     state:'',    //选择哪个状态
@@ -131,7 +131,11 @@ Page({
           if (resDataList && resDataList.length>0){
             for (var i = 0; i < resDataList.length; i++) {
               if (!resDataList[i].tags) {
-                resDataList[i].tags = []
+                resDataList[i].tags = [
+                  { "name":"添加+","type":2}
+                ]
+              } else if (resDataList[i].tags.length <5){
+                resDataList[i].tags.push({ "name": "添加+", "type": 2 })
               }
             }
           }
@@ -604,4 +608,33 @@ Page({
       }
     })
   },
+  addTags : function(){
+    var thisPage = this;
+
+    thisPage.setData({
+      codeImageHidden : false
+    })
+
+  },
+  selectcel: function () {
+    var thisPage = this;
+    thisPage.setData({
+      codeImageHidden: true,
+      tag : null
+    })
+  },
+  selectsure: function () {
+    var thisPage = this;
+      thisPage.setData({
+        codeImageHidden: true,
+      })
+    
+  },
+  accent_input: function(e){
+    var value = e.detail.value;
+    this.setData({
+      tag:  value
+    })
+    
+  }
 })
