@@ -252,6 +252,7 @@
   line-height: 50rpx;
   padding: 0 10rpx;
   text-align:center;
+  margin: 0 10rpx; 
 }
 .tagItem{
   color: white;

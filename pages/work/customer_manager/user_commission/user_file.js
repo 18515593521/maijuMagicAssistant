@@ -132,10 +132,10 @@ Page({
             for (var i = 0; i < resDataList.length; i++) {
               if (!resDataList[i].tags) {
                 resDataList[i].tags = [
-                  { "name":"添加+","type":2}
+                  { "name":"添加 +","type":2}
                 ]
               } else if (resDataList[i].tags.length <5){
-                resDataList[i].tags.push({ "name": "添加+", "type": 2 })
+                resDataList[i].tags.push({ "name": "添加 +", "type": 2 })
               }
             }
           }
@@ -608,11 +608,13 @@ Page({
       }
     })
   },
-  addTags : function(){
+  addTags : function(e){
     var thisPage = this;
-
+    var customerId = e.currentTarget.dataset.item.customer_id;
+    console.log(customerId)
     thisPage.setData({
-      codeImageHidden : false
+      codeImageHidden : false,
+      customerId: customerId
     })
 
   },
@@ -620,14 +622,45 @@ Page({
     var thisPage = this;
     thisPage.setData({
       codeImageHidden: true,
-      tag : null
+      tag : null,
+      customerId :null
     })
   },
   selectsure: function () {
     var thisPage = this;
-      thisPage.setData({
-        codeImageHidden: true,
-      })
+      
+    if (!thisPage.data.tag){
+      app.showWarnMessage("请填写标签名称!");
+    }
+
+    wx.request({
+      url: url + '/app/addHorizontalTag',
+      data: {           //请求参数 
+        customerId: thisPage.data.customerId,
+        tag: thisPage.data.tag,
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      method: 'POST',
+      success: function (res) {
+        var resData = res.data;
+        if (resData.code == 0) {
+          thisPage.setData({
+            codeImageHidden: true,
+            customerId: null,
+            tag: null,
+          })
+          thisPage.getData();
+        } else if (resData.code == 1) {
+          app.showWarnMessage("提交失败！");  //失败
+        }
+      },
+      fail: function (res) {
+        app.showWarnMessage("提交失败！");  //失败
+      }
+    })
+
     
   },
   accent_input: function(e){

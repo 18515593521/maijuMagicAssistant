@@ -5,7 +5,7 @@
   <view class="selectsBox positions">
     <view class='topSelects'>
   
-        <input type='text' class='inputS'placeholder="输入标签文字，最多五个字" bindinput="accent_input" maxlength='5'></input>
+        <input type='text' class='inputS'placeholder="输入标签文字，最多五个字" value='{{tag}}' bindinput="accent_input" maxlength='5'></input>
        
     </view>
   <view class='opactionsb'>
@@ -61,10 +61,10 @@
         <view class='tagItem'>
             <block wx:for='{{item.tags}}' wx:for-item='item1' wx:key='id'>
               <view wx:if='{{item1.type == 1}}' class='tags'>
-                {{item1.name == 1}}
+                {{item1.name}}
               </view>
-              <view wx:elif='{{item1.type == 2}}' class='tags' bindtap='addTags'>
-                添加
+              <view wx:elif='{{item1.type == 2}}' class='tags' data-item="{{item}}" bindtap='addTags'>
+                添加+
               </view>
             </block>
         </view>
