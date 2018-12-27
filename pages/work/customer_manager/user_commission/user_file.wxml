@@ -42,22 +42,29 @@
     <!--以上是后台，以下是导购-->
     <view class='user_info_list flexColumn' hidden='{{customerShow}}'>
       <block wx:for='{{customerInfo}}' wx:for-item='item' wx:key='customerId'>
-        <view class='user_info_item flexRow'>
-          <view class='info_item_box '>
-            <view>客户姓名</view>
-            <view>{{item.name}}</view>
+      <view>
+          <view>
+            <block wx:for='{{item.tags}}' wx:for-item='item1' wx:key='id'>
+            <view>{{item1.name}}</view>
+            </block>
           </view>
-          <view class='info_item_box '>
-            <view>联系电话</view>
-            <view>{{item.phone}}</view>
-          </view>
-          <view class='info_item_box '>
-            <view>订单总额</view>
-            <view>{{item.order_price?item.order_price:0}}</view>
-          </view>
-           <view class='info_item_box '>
-            <view>推广数量</view>
-            <view>{{item.inviterNum?item.inviterNum:0}}</view>
+          <view class='user_info_item flexRow'>
+            <view class='info_item_box '>
+              <view>客户姓名</view>
+              <view>{{item.name}}</view>
+            </view>
+            <view class='info_item_box '>
+              <view>联系电话</view>
+              <view>{{item.phone}}</view>
+            </view>
+            <view class='info_item_box '>
+              <view>订单总额</view>
+              <view>{{item.order_price?item.order_price:0}}</view>
+            </view>
+            <view class='info_item_box '>
+              <view>推广数量</view>
+              <view>{{item.inviterNum?item.inviterNum:0}}</view>
+            </view>
           </view>
         </view>
       </block>
