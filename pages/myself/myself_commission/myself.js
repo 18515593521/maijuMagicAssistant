@@ -109,7 +109,8 @@ is_horizontal_alliances : false,
     data.appid = app.globalData.appId;
     data.node3 = app.globalData.user_Info.factoryId;
     data.type = 1;
-   
+    data.scene = app.globalData.user_Info.pay_status
+    data.shopId = app.globalData.user_Info.shop_id
 
     wx.request({
       url: urls + '/app/selectCommissionInfo',  //接口地址 
