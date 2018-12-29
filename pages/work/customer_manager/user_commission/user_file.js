@@ -669,5 +669,42 @@ Page({
       tag:  value
     })
     
+  },
+  deleteTags : function(e){
+    var thisPage  = this;
+    var id = e.currentTarget.dataset.item.id;
+    wx.showModal({
+      content: '是否删除标签',
+      success(res) {
+        if (res.confirm) {
+          wx.request({
+            url: url + '/app/deleteHorizontalTag/'+id,
+            header: {
+              'content-type': 'application/json' // 默认值
+            },
+            method: 'GET',
+            success: function (res) {
+              var resData = res.data;
+              if (resData.code == 0) {
+                wx.showToast({
+                  title: '删除成功!',
+                  icon: 'success',
+                  duration: 2000
+                })
+                thisPage.getData();
+              } else if (resData.code == 1) {
+                app.showWarnMessage("提交失败！");  //失败
+              }
+            },
+            fail: function (res) {
+              app.showWarnMessage("提交失败！");  //失败
+            }
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+
   }
 })

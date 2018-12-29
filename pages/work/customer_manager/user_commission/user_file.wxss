@@ -248,17 +248,19 @@
 .tags{
   background-color: #4abdc2;
   height: 50rpx;
-  font-size: 30rpx;
+  font-size: 28rpx;
   line-height: 50rpx;
   padding: 0 10rpx;
   text-align:center;
   margin: 0 10rpx; 
+  border-radius: 10rpx;
 }
 .tagItem{
   color: white;
   display: flex;
   align-items: flex-start;
   margin: 0 15rpx;
+  margin-top: 20rpx;
 }
 
 
@@ -303,6 +305,7 @@
   display:flex;
   justify-content:center;
   align-items:center;
+  font-size: 30rpx;
 }
 .selectItem{
   display:flex;
@@ -336,6 +339,10 @@
 .inputS{
   width:600rpx;
   height:36px;
+}
+
+.textBottom{
+  height: 50rpx;
 }
 
 

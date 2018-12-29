@@ -60,7 +60,7 @@
         <view class='user_info_item'>
         <view class='tagItem'>
             <block wx:for='{{item.tags}}' wx:for-item='item1' wx:key='id'>
-              <view wx:if='{{item1.type == 1}}' class='tags'>
+              <view wx:if='{{item1.type == 1}}' class='tags'data-item="{{item1}}" bindtap='deleteTags'>
                 {{item1.name}}
               </view>
               <view wx:elif='{{item1.type == 2}}' class='tags' data-item="{{item}}" bindtap='addTags'>
@@ -70,19 +70,19 @@
         </view>
         <view class=' flexRow'>
           <view class='info_item_box '>
-            <view>客户姓名</view>
+            <view class='textBottom'>客户姓名</view>
             <view>{{item.name}}</view>
           </view>
           <view class='info_item_box '>
-            <view>联系电话</view>
+            <view class='textBottom'>联系电话</view>
             <view>{{item.phone}}</view>
           </view>
           <view class='info_item_box '>
-            <view>订单总额</view>
+            <view class='textBottom'>订单总额</view>
             <view>{{item.order_price?item.order_price:0}}</view>
           </view>
            <view class='info_item_box '>
-            <view>推广数量</view>
+            <view class='textBottom'>推广数量</view>
             <view>{{item.inviterNum?item.inviterNum:0}}</view>
           </view>
         </view>
