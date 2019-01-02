@@ -203,7 +203,7 @@ Page({
     if (app.globalData.spreadImage){
       imageUrl = app.globalData.spreadImage.image
     }else{
-      imageUrl = ''
+      imageUrl = '/pages/images/bg.jpg'
     }
     return {
       title: thisPage.data.shareName ? thisPage.data.shareName : app.globalData.user_Info.userInfo.filiale,
