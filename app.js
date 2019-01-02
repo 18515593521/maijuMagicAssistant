@@ -2,8 +2,8 @@
 App({
   globalData: {
     //【域名】
-    domainName: 'http://localhost:8080/shop-web',   //域名
-    // domainName: 'https://www.kaolaj.com/magicCloud',   //域名（线上）
+   // domainName: 'http://localhost:8080/shop-web',   //域名
+     domainName: 'https://www.kaolaj.com/magicCloud',   //域名（线上）
    //domainName: 'https://www.kaolaj.com/magic_cloud2.0_test',   //域名（测试）
     //  domainName: 'https://www.kaolaj.com/magic_cloud2.0_shenhe',
     user_Info: {
@@ -23,7 +23,7 @@ App({
     appKey: '',
     logoImage:null,  //获取头像
     type:300,
-    version: '1.0.0',
+    version: '1.0.1',
     is_horizontal_alliances: false
   },
 

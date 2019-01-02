@@ -45,6 +45,7 @@ Page({
     //var domainName_onLine = 'https://www.kaolaj.com/magic_cloud2.0_test';
     //var domainName_onLine = 'https://www.kaolaj.com/magic_cloud2.0_shenhe';
      var domainName_onLine = 'localhost:8080/shop-web';
+    // var domainName_onLine = 'localhost:8080/shop-web';
     // var domainName_outLine = 'https://www.kaolaj.com/magic_cloud2.0_test';
     var domainName_outLine = 'https://www.kaolaj.com/magic_cloud2.0_shenhe';
 //     var domainName_onLine = 'http://192.168.1.6:8080/shop-web';
@@ -112,7 +113,7 @@ Page({
               gifts: false
             })
             wx.request({
-              url: urls + '/app/sellerLogin1',
+              url: app.globalData.domainName + '/app/sellerLogin1',
               data: objectData,
               header: {
                 'content-type': 'application/json' // 默认值
@@ -182,7 +183,7 @@ Page({
     var thisPage = this;
 
     wx.request({
-      url: urls + '/app/selectNode3Image',  //接口地址
+      url: app.globalData.domainName + '/app/selectNode3Image',  //接口地址
       data: {
         node3: app.globalData.user_Info.factoryId
       },
